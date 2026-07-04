@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>一张球票撬动一座城｜苏超数据新闻</title>
+<style>
+  :root{--bg:#08111f;--bg2:#0d1a2d;--card:#111d2f;--card2:#14243a;--text:#eaf3ff;--muted:#91a5bf;--line:#28415f;--accent:#54d6ff;--accent2:#ffcf5a;--accent3:#ff7b9c;--green:#66e3b4;--shadow:0 24px 80px rgba(0,0,0,.35);--radius:26px;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 900px at 15% 2%, rgba(84,214,255,.18), transparent 45%),radial-gradient(900px 700px at 85% 4%, rgba(255,207,90,.16), transparent 42%),linear-gradient(180deg,var(--bg),#070b13 45%,#0a0e16 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.65;}
+  a{color:#9be9ff;text-decoration:none;border-bottom:1px solid rgba(155,233,255,.35);word-break:break-all}
+  .noise{position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch"/></filter><rect width="180" height="180" filter="url(%23n)" opacity=".45"/></svg>');mix-blend-mode:screen}
+  header.hero{min-height:100vh;display:grid;place-items:center;padding:80px 22px 40px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:10% -20%;background:conic-gradient(from 100deg at 50% 50%, transparent, rgba(84,214,255,.12), transparent, rgba(255,207,90,.08), transparent);filter:blur(10px);animation:spin 26s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+  .hero-inner{position:relative;z-index:2;max-width:1180px;width:100%;display:grid;grid-template-columns:1.12fr .88fr;gap:28px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid rgba(84,214,255,.36);border-radius:999px;color:#a9ebff;background:rgba(84,214,255,.08);font-size:14px;letter-spacing:.08em}
+  .ball{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 26px var(--accent)}
+  h1{font-size:clamp(42px,7vw,92px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.06em}
+  .hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,#fff,#78e6ff 45%,#ffd86b);-webkit-background-clip:text;background-clip:text}
+  .lead{font-size:clamp(17px,2.2vw,24px);color:#c6d7ea;max-width:720px;margin:0 0 28px}
+  .hero-card{background:linear-gradient(180deg,rgba(17,29,47,.82),rgba(15,24,39,.72));border:1px solid rgba(255,255,255,.12);border-radius:32px;box-shadow:var(--shadow);padding:22px;backdrop-filter:blur(14px)}
+  .map-panel{height:520px;position:relative;border-radius:24px;overflow:hidden;background:radial-gradient(circle at center,rgba(84,214,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08)}
+  .map-panel svg{width:100%;height:100%}
+  .hero-note{font-size:13px;color:#8fa2bb;margin-top:12px}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  .stat-mini{padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.055)}
+  .stat-mini b{display:block;font-size:28px;line-height:1;color:#fff}
+  .stat-mini span{display:block;color:#8fa2bb;margin-top:8px;font-size:13px}
+  nav{position:sticky;top:0;z-index:20;background:rgba(8,17,31,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+  nav .nav-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:10px 22px}
+  .brand{font-weight:900;letter-spacing:-.02em}
+  .links{display:flex;gap:10px;flex-wrap:wrap}
+  .links a{border:0;color:#afc2d8;padding:7px 10px;border-radius:12px}
+  .links a:hover{background:rgba(255,255,255,.08);color:#fff}
+  main{max-width:1180px;margin:0 auto;padding:44px 22px 90px}
+  .section{margin:72px 0}
+  .section-title{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:end;margin-bottom:24px}
+  .eyebrow{font-weight:900;color:var(--accent2);letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+  .section h2{font-size:clamp(30px,4.2vw,56px);line-height:1.12;letter-spacing:-.045em;margin:8px 0 0}
+  .section-title p{color:#bdd0e4;font-size:17px;margin:0}
+  .grid{display:grid;gap:18px}
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .grid.four{grid-template-columns:repeat(4,1fr)}
+  .card{background:linear-gradient(180deg,rgba(17,29,47,.92),rgba(12,21,35,.9));border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(84,214,255,.05),transparent 38%,rgba(255,207,90,.04));pointer-events:none}
+  .card>*{position:relative}
+  .card h3{margin:0 0 10px;font-size:22px}
+  .caption{color:#90a4bd;font-size:13px;margin:10px 0 0}
+  .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#9ceaff;background:rgba(84,214,255,.08);border:1px solid rgba(84,214,255,.25);border-radius:999px;padding:5px 9px}
+  .tag.warn{color:#ffd67a;background:rgba(255,207,90,.1);border-color:rgba(255,207,90,.28)}
+  .big-number{font-size:clamp(38px,5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1;color:#fff}
+  .big-number small{font-size:.36em;color:#9fb5cc;margin-left:4px}
+  .metric-card p{color:#a7b9cf;margin:10px 0 0}
+  .viz{height:410px;min-height:350px}
+  .viz.tall{height:560px}
+  .legend{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:10px 0 8px}
+  .legend-item{display:flex;gap:8px;align-items:center;color:#b8cce2;font-size:13px}
+  .swatch{width:12px;height:12px;border-radius:50%}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+  .chip{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:999px;color:#b8cbe0;padding:8px 12px;cursor:pointer}
+  .chip.active{background:rgba(84,214,255,.16);color:#fff;border-color:rgba(84,214,255,.38)}
+  .tooltip{position:fixed;pointer-events:none;background:rgba(4,10,18,.94);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px 12px;color:#eaf3ff;font-size:13px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:99;max-width:280px;display:none}
+  .tooltip b{color:#fff}
+  .axis text,.bar-label,.point-label{fill:#aabdd2;font-size:12px}
+  .grid-line{stroke:rgba(255,255,255,.08);stroke-width:1}
+  .bar{rx:8;cursor:pointer;transition:.2s}
+  .bar:hover{filter:brightness(1.2)}
+  .node{cursor:pointer;transition:.2s}
+  .node:hover{filter:drop-shadow(0 0 14px rgba(84,214,255,.9))}
+  .city-label{font-size:12px;fill:#dbeaff;font-weight:800;paint-order:stroke;stroke:rgba(3,12,20,.82);stroke-width:4px;stroke-linejoin:round}
+  .edge{stroke:rgba(160,210,255,.32);stroke-width:1.6;transition:.2s}
+  .map-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+  .detail{min-height:560px}
+  .detail .city-name{font-size:42px;font-weight:900;letter-spacing:-.04em}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .mini-box{padding:12px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+  .mini-box b{font-size:22px;display:block}
+  .mini-box span{font-size:12px;color:#8fa2bb}
+  .compare-note{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#c5d7ea}
+  .topic-card{min-height:210px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,rgba(84,214,255,.10),rgba(15,24,39,.9));}
+  .topic-visual{height:96px;border-radius:18px;display:grid;place-items:center;font-size:26px;font-weight:900;letter-spacing:.04em;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 30%),linear-gradient(135deg, rgba(255,207,90,.22), rgba(84,214,255,.12));border:1px solid rgba(255,255,255,.08)}
+  .topic-meta{color:#b8cde3;font-size:14px}
+  .timeline{position:relative;padding:12px 0 0}
+  .timeline:before{content:"";position:absolute;left:18px;top:20px;bottom:20px;width:2px;background:linear-gradient(#54d6ff,#ffcf5a)}
+  .tl-item{position:relative;padding:0 0 26px 54px}
+  .tl-item:before{content:"";position:absolute;left:9px;top:4px;width:18px;height:18px;border-radius:50%;background:#071321;border:3px solid #54d6ff;box-shadow:0 0 18px rgba(84,214,255,.5)}
+  .tl-item b{font-size:18px}
+  .tl-item p{margin:6px 0;color:#a9bbd0}
+  .tl-item strong{color:#fff}
+  .stack-cards{display:grid;gap:14px}
+  .stack-card{padding:18px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+  .stack-card .num{font-size:40px;font-weight:900;line-height:1;letter-spacing:-.04em}
+  .stack-card .num small{font-size:16px;color:#a6bdd5}
+  .stack-card p{margin:8px 0 0;color:#c6d8ea}
+  .flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:stretch}
+  .flow-step{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055);border-radius:22px;padding:16px;min-height:152px;cursor:pointer;transition:.22s;position:relative}
+  .flow-step:hover,.flow-step.active{transform:translateY(-4px);background:rgba(84,214,255,.12);border-color:rgba(84,214,255,.35)}
+  .flow-step .icon{font-size:28px}
+  .flow-step b{display:block;margin:8px 0 4px}
+  .flow-step span{font-size:13px;color:#9ab0c7}
+  .flow-step:after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:#526f90;font-size:18px}
+  .flow-step:last-child:after{display:none}
+  .flow-detail{margin-top:16px;color:#c6d8ea;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:16px}
+  .case-card{min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+  .case-card .num{font-size:42px;font-weight:900;letter-spacing:-.04em}
+  .case-card .num small{font-size:16px;color:#9fb5cc}
+  .case-card .source{font-size:12px;color:#90a4bd}
+  .case-card.highlight{background:linear-gradient(180deg,rgba(255,207,90,.14),rgba(18,29,45,.92))}
+  .conclusion-quote{padding:24px;border-radius:28px;background:linear-gradient(180deg,rgba(84,214,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.10)}
+  .conclusion-quote .big{font-size:clamp(30px,4.4vw,56px);line-height:1.16;font-weight:900;letter-spacing:-.05em;margin:0 0 18px}
+  .conclusion-quote p{font-size:17px;color:#c7d8ea;margin:0 0 14px}
+  .conclusion-points{display:grid;gap:12px;margin-top:16px}
+  .conclusion-points div{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);color:#d3e4f5}
+  .sources ol{margin:0;padding-left:20px}
+  .sources li{margin:8px 0;color:#b8cce2}
+  .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:980px){.hero-inner,.section-title,.grid.two,.grid.three,.grid.four,.map-wrap{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}.flow-step:after{display:none}.detail{min-height:auto}}
+  @media(max-width:620px){header.hero{padding-top:56px}.stat-row{grid-template-columns:1fr 1fr}nav .nav-inner{padding:10px 12px}main{padding:36px 12px 70px}.card{padding:18px}.map-panel{height:420px}}
+
+  .data-table-wrap{max-height:560px;overflow:auto;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.13)}
+  table.data-table{width:100%;border-collapse:collapse;font-size:14px}
+  .data-table th{position:sticky;top:0;background:#101d30;color:#dcecff;text-align:left;z-index:2}
+  .data-table th,.data-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.07);white-space:nowrap}
+  .data-table tr:hover td{background:rgba(84,214,255,.06)}
+  .table-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+  .table-tools input,.table-tools select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#eaf3ff;border-radius:14px;padding:10px 12px;outline:none}
+  .table-tools input{min-width:220px;flex:1}
+  .micro-note{font-size:12px;color:#8fa2bb;margin-top:10px}
+  @media(max-width:620px){.data-table th,.data-table td{font-size:12px;padding:8px 9px}}
+
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="tooltip" id="tooltip"></div>
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker"><span class="ball"></span> 苏超数据新闻</div>
+      <h1>一张球票<br><em>撬动一座城</em></h1>
+      <p class="lead">一场省级城市足球联赛，把 13 座城市放进同一张赛程表，也把球迷、热搜、抢票、客场奔赴和城市消费串成了一条链。苏超的火，不只在球场上，更在每一次为城市呐喊、转发、出发和停留之中。</p>
+      <div class="stat-row">
+        <div class="stat-mini"><b>85</b><span>2025赛季比赛场次</span></div>
+        <div class="stat-mini"><b>243万+</b><span>累计现场观众</span></div>
+        <div class="stat-mini"><b>1041亿</b><span>相关话题点击量</span></div>
+        <div class="stat-mini"><b>62329</b><span>决赛现场观众</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="map-panel" id="heroMap"></div>
+      <div class="hero-note">江苏地图与城市点位按实际地理位置近似落位，悬停可查看城市信息。</div>
+    </div>
+  </div>
+</header>
+<nav>
+  <div class="nav-inner">
+    <div class="brand">苏超数据新闻</div>
+    <div class="links">
+      <a href="#p1">火爆程度</a><a href="#p2">城市身份</a><a href="#p3">常州</a><a href="#p4">抢票</a><a href="#p5">到场</a><a href="#p6">消费链</a><a href="#p7">结论</a><a href="#sources">来源</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="section reveal" id="p1">
+    <div class="section-title"><div><div class="eyebrow">PART 01</div><h2>苏超到底有多火？</h2></div><p></p></div>
+    <div class="grid four">
+      <div class="card metric-card"><span class="tag">赛事规模</span><div class="big-number">85<small>场</small></div><p>13 城参赛，常规赛加淘汰赛，共同组成完整赛季。</p></div>
+      <div class="card metric-card"><span class="tag">现场观赛</span><div class="big-number">2.86<small>万人/场</small></div><p>全季场均现场观赛人数，已明显高于普通省级赛事。</p></div>
+      <div class="card metric-card"><span class="tag">社交传播</span><div class="big-number">1041<small>亿次</small></div><p>抖音、微博等平台相关话题累计点击量。</p></div>
+      <div class="card metric-card"><span class="tag">单场纪录</span><div class="big-number">62329<small>人</small></div><p>决赛单场现场观众，刷新中国业余足球赛事上座纪录。</p></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p2">
+    <div class="section-title"><div><div class="eyebrow">PART 02</div><h2>火的不是球队，而是城市身份</h2></div><p>“一城一队、一城一主场”</p></div>
+    <div class="map-wrap">
+      <div class="card">
+        <h3>江苏13城球队地图</h3>
+        <div class="legend"><div class="legend-item"><span class="swatch" style="background:#54d6ff"></span>进入八强城市</div><div class="legend-item"><span class="swatch" style="background:#ffcf5a"></span>未进入八强/未标注八强城市</div></div>
+        <div class="toolbar"><button class="chip active" data-map="all">全部城市</button><button class="chip" data-map="heat">高热搜城市</button><button class="chip" data-map="gdp">万亿GDP城市</button><button class="chip" data-map="playoff">八强城市</button></div>
+        <div class="viz tall" id="cityMap"></div>
+        <p class="caption">交互：点击城市圆点，右侧卡片会更新；圆点大小综合 GDP 与已披露热搜频次，仅作视觉编码，城市点位按地理位置近似落位。</p>
+      </div>
+      <div class="card detail" id="cityDetail"><span class="tag">点击地图城市</span><div class="city-name">常州</div><p class="city-copy">GDP 不是全省最高，却在新华社统计的苏超热搜中出现频次最高。常州的出圈，正好说明这场联赛的热度并不只由经济体量决定。</p><div class="detail-grid"><div class="mini-box"><b>10813.60</b><span>2024 GDP，亿元</span></div><div class="mini-box"><b>50</b><span>新华社披露热搜出现次数</span></div><div class="mini-box"><b>—</b><span>八强成绩</span></div><div class="mini-box"><b>十三妹</b><span>高频热梗</span></div></div><div class="compare-note" style="margin-top:16px">同一张赛程表里，城市不再只是地名。它们变成了能被支持、比较、调侃和再次传播的身份标签。</div></div>
+    </div>
+    <div class="grid two" style="margin-top:18px">
+      <div class="card"><h3>2024年各市GDP（亿元）</h3><div class="viz" id="gdpBar"></div><p class="caption">为保证口径统一，这里采用已完整公开的 2024 年各设区市 GDP 数据。</p></div>
+      <div class="card"><h3>新华社明确披露的城市热搜出现次数（降序）</h3><div class="viz" id="heatBar"></div><p class="caption">图中仅展示新华社正文明确披露具体次数的城市，其余城市在原文中有排序描述，但无明确数值。</p></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p3">
+    <div class="section-title"><div><div class="eyebrow">PART 03</div><h2>让我们一起聊常州</h2></div><p>常州的 GDP 不是最好，但它在苏超传播中最先出圈。热梗、自嘲、官方下场和文旅联动，让这座城市成了苏超叙事里最鲜明的符号之一。</p></div>
+    <div class="grid two">
+      <div class="card"><h3>新华社披露的城市热搜出现频次</h3><div class="viz" id="heatBar2"></div><p class="caption">常州在这组样本中位列第一，明显高于经济体量更大的南京和苏州。</p></div>
+      <div class="card"><h3>火热常州</h3><div class="timeline"><div class="tl-item"><b>热搜最多</b><p>新华社梳理的 171 个相关热搜中，<strong>50 个</strong>和常州有关，位列 13 市首位。</p></div><div class="tl-item"><b>最出圈的梗</b><p>“十三妹”“输球去笔画”“丨州”“0州”等梗持续破圈，其中 <strong>“0州”话题破亿</strong>，并冲到热搜第一，在榜时长 14 小时。</p></div><div class="tl-item"><b>官方主动玩梗</b><p>荔枝新闻报道，“常州发布”三天六条“苏超”系列视频，播放量达到 <strong>160万+</strong>。</p></div><div class="tl-item"><b>流量变客流</b><p>端午三天，常州接待扬州游客 <strong>15万人次</strong>；相关报道提到，周边餐饮、住宿、零售消费 <strong>激增25%</strong>。</p></div></div></div>
+    </div>
+    <div class="grid three" style="margin-top:18px">
+      <div class="card topic-card"><div><span class="tag warn">话题 01</span><h3>“十三妹”与“0州”</h3></div><div class="topic-visual">13 → 0</div><div class="topic-meta">一边输球，一边出圈。比赛结果被不断改写成梗图与口号，常州也在网友调侃中迅速被更多人记住。</div><div class="source">数据：与常州有关热搜 50 个；“0州”话题破亿，在榜 14 小时。</div></div>
+      <div class="card topic-card"><div><span class="tag">话题 02</span><h3>官方下场玩梗</h3></div><div class="topic-visual">常州发布</div><div class="topic-meta">“飙歌、对诗、家书、美食”轮番上阵，地方发布账号不只是转播赛事，而是在主动参与城市叙事。</div><div class="source">数据：荔枝新闻报道，“常州发布”三天六条视频，播放量 160万+。</div></div>
+      <div class="card topic-card"><div><span class="tag">话题 03</span><h3>输了笔画，赢了流量</h3></div><div class="topic-visual">15万人次</div><div class="topic-meta">玩梗不只停留在线上。免票、宠粉和节日联动，把围观者转成了游客，把注意力转成了消费。</div><div class="source">数据：端午三天接待扬州游客 15 万人次，相关消费增长 25%。</div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p4">
+    <div class="section-title"><div><div class="eyebrow">PART 04</div><h2>从球票看全民狂欢</h2></div><p>想看比赛？先抢到票！</p></div>
+    <div class="grid two">
+      <div class="card"><h3>样本场次中签率</h3><div class="viz" id="ticketBar"></div><p class="caption">越低代表越难中签。第11轮数据来自苏州市政府转载公告；四分之一决赛最低值、决赛值来自新华社。</p></div>
+      <div class="card"><h3>数据解读</h3><div class="timeline"><div class="tl-item"><b>常规赛也很难抢</b><p>第11轮样本里，苏州 vs 盐城中签率 <strong>10.0%</strong>，南京 vs 徐州 <strong>12.4%</strong>。</p></div><div class="tl-item"><b>淘汰赛更紧张</b><p>四分之一决赛四场比赛中签率均低于 7%，其中南通 vs 淮安最低仅 <strong>3.3%</strong>。</p></div><div class="tl-item"><b>决赛变成全网焦点</b><p>新华社报道，决赛门票中签率仅 <strong>1.2%</strong>。抢票难度本身，也成了苏超传播的一部分。</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p5">
+    <div class="section-title"><div><div class="eyebrow">PART 05</div><h2>抢到票以后，人真的进入了城市</h2></div><p>现场观众的增长说明，这股热度没有停在屏幕里。它首先变成了到场的人，然后变成了城市里的停留、聚集和消费。</p></div>
+    <div class="grid two">
+      <div class="card"><h3>现场观众关键数字</h3><div class="stack-cards"><div class="stack-card"><div class="num">211.89<small>万人</small></div><p>常规赛阶段累计现场观赛人数。</p></div><div class="stack-card"><div class="num">61355<small>人</small></div><p>南京 vs 连云港四分之一决赛现场观众，刷新当时苏超纪录。</p></div><div class="stack-card"><div class="num">62329<small>人</small></div><p>决赛单场现场观众，再次刷新纪录。</p></div><div class="stack-card"><div class="num">243万+<small>人</small></div><p>整个 2025 赛季累计现场观众总量。</p></div></div></div>
+      <div class="card"><h3>从上座到消费的转折点</h3><div class="timeline"><div class="tl-item"><b>常规赛阶段</b><p>场均观众超过 <strong>2.7万人</strong>，苏超已经不只是地方比赛，而是一项稳定吸引人流的公共事件。</p></div><div class="tl-item"><b>淘汰赛阶段</b><p>新华社报道，淘汰赛场均观众超过 <strong>4万人</strong>，直播观看较常规赛增长明显。</p></div><div class="tl-item"><b>纪录不断刷新</b><p>南京 1/4 决赛达到 <strong>61355人</strong>，决赛达到 <strong>62329人</strong>，高密度人流开始持续外溢到城市空间。</p></div><div class="tl-item"><b>意义不止在球场</b><p>球场外的餐饮、商圈、酒店和景区，开始接住比赛带来的停留时间与跨城客流。</p></div></div></div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>2025苏超赛果表</h3>
+      <div class="table-tools">
+        <input id="scheduleSearch" placeholder="搜索城市 / 比分 / 阶段，如：常州、南京、决赛、点球" />
+        <select id="scheduleStage"><option value="全部">全部阶段</option><option value="常规赛">常规赛</option><option value="淘汰赛">淘汰赛</option></select>
+        <select id="scheduleRound"><option value="全部">全部轮次</option></select>
+      </div>
+      <div class="data-table-wrap"><table class="data-table"><thead><tr><th>阶段</th><th>轮次</th><th>日期</th><th>主队</th><th>比分</th><th>客队</th><th>备注</th></tr></thead><tbody id="scheduleBody"></tbody></table></div>
+      <div class="micro-note">说明：赛果表根据公开可检索报道整理。若后续获得官方CSV，可直接替换脚本中的 scheduleRows 数据。</div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p6">
+    <div class="section-title"><div><div class="eyebrow">PART 06</div><h2>一张票根，怎样变成一条消费链？</h2></div><p>苏超的商业价值不只在门票收入，更在于它把人带进了一座城市：看球、吃饭、住宿、逛景区，再回到社交平台继续传播。</p></div>
+    <div class="card"><h3>苏超流量转化路径</h3><div class="flow"><div class="flow-step active" data-flow="短视频、热搜和媒体报道，把苏超推到普通人的信息流里。抖音相关内容播放 370 亿次，相关话题也多次登上热搜。"><div class="icon">📱</div><b>刷到</b><span>话题与短视频</span></div><div class="flow-step" data-flow="球票采用预约、摇号等方式，热门场次中签率持续走低。稀缺性让“抢票”本身也成为传播内容。"><div class="icon">🎟️</div><b>抢票</b><span>预约+抽签</span></div><div class="flow-step" data-flow="球迷进入主场或客场，城市交通、住宿、餐饮开始承接流量。"><div class="icon">🚄</div><b>奔赴</b><span>跨城流动</span></div><div class="flow-step" data-flow="比赛日不只发生在体育场，商场、夜市、广场成为“第二现场”，看球与消费结合。"><div class="icon">🏟️</div><b>观赛</b><span>球场+第二现场</span></div><div class="flow-step" data-flow="票根优惠、景区半价、餐饮套餐和城市文创，让看比赛延伸为城市游。"><div class="icon">🍜</div><b>吃住游</b><span>文旅体商融合</span></div><div class="flow-step" data-flow="球迷把现场体验发布回社交平台，城市梗、美食、景点再次被传播。"><div class="icon">📣</div><b>二传</b><span>UGC扩散</span></div><div class="flow-step" data-flow="从网红到长红，关键看城市是否能把一次流量沉淀为公共体育、文旅服务和城市文化。"><div class="icon">🏙️</div><b>沉淀</b><span>城市文化资产</span></div></div><div class="flow-detail" id="flowDetail">短视频、热搜和媒体报道，把苏超推到普通人的信息流里。抖音相关内容播放 370 亿次，相关话题也多次登上热搜。</div></div>
+    <div class="grid three" style="margin-top:18px">
+      <div class="card case-card highlight"><div><span class="tag warn">单场案例｜南京</span><h3>一场南京主场比赛，如何放大成城市消费？</h3></div><div><div class="num">27<small>亿元</small></div><p>南京 vs 苏州比赛前后 3 天，南京市文旅消费总额；其中异地文旅消费 17 亿元。</p></div><div class="source">口径：单场前后 3 天城市文旅消费</div></div>
+      <div class="card case-card"><div><span class="tag">城市案例｜徐州</span><h3>不是只有大城市吃到流量</h3></div><div><div class="num">30.79<small>亿元</small></div><p>苏超开赛 1 个月，徐州文旅消费额；同比增长 48.55%。</p></div><div class="source">口径：开赛 1 个月城市文旅消费</div></div>
+      <div class="card case-card"><div><span class="tag">平台侧｜抖音生活服务</span><h3>内容热度转入团购消费</h3></div><div><div class="num">+68<small>%</small></div><p>赛事期间，江苏全省抖音团购销售额同比增长；订单量同比增长 24%。</p></div><div class="source">口径：平台团购交易数据</div></div>
+    </div>
+    <div class="grid three" style="margin-top:18px">
+      <div class="card case-card"><div><span class="tag">前六轮线下监测</span><h3>服务营收</h3></div><div><div class="num">379.6<small>亿元</small></div><p>旅游、出行、餐饮、住宿、体育五个场景合计实现服务营收，同比增长 42.7%。</p></div><div class="source">口径：前六轮五类场景</div></div>
+      <div class="card case-card"><div><span class="tag">商务厅统计</span><h3>重点零售与商超</h3></div><div><div class="num">116.4<small>亿元</small></div><p>自 5 月开赛以来，全省重点零售企业、商超在比赛期间实现销售额，同比增长 34.7%。</p></div><div class="source">口径：重点零售企业、商超</div></div>
+      <div class="card case-card"><div><span class="tag">文旅厅统计</span><h3>景区与异地消费</h3></div><div><div class="num">139.6<small>亿元</small></div><p>截至决赛日前，银联渠道实现的异地文旅消费；外地游客达 1370.3 万人次。</p></div><div class="source">口径：主场城市比赛日期间</div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p7">
+    <div class="section-title"><div><div class="eyebrow">PART 07</div><h2>苏超火的不是一场比赛，而是一座座城市被看见</h2></div><p>一场联赛之所以能变成公共事件，不只是因为比分，而是因为城市身份、网络传播和线下消费被同时组织了起来。</p></div>
+    <div class="grid two">
+      <div class="card"><h3>城市对抗网络</h3><div class="legend"><div class="legend-item"><span class="swatch" style="background:#54d6ff"></span>城市节点</div><div class="legend-item"><span class="swatch" style="background:#ffcf5a"></span>样本对抗标签</div></div><div class="toolbar"><button class="chip active" data-net="all">全部样本</button><button class="chip" data-net="ticket">第11轮抽签样本</button><button class="chip" data-net="knockout">淘汰赛样本</button></div><div class="viz tall" id="matchNetwork"></div><p class="caption">线条代表页面中用于分析的公开样本对抗关系。它们共同说明：城市之间的比较、支持和调侃，才是苏超持续扩散的叙事引擎。</p></div>
+      <div class="card conclusion-quote"><div class="big">苏超真正组织起来的，不只是比赛，<br>更是城市身份与公共情绪。</div><p>13 座城市因为“一城一队、一城一主场”被放到同一个舞台上。球迷为城市抢票、跨城奔赴，在社交平台玩梗，也在餐饮、住宿、景区和商圈里完成一次次停留与消费。</p><p>因此，苏超最值得被记录的，并不是“哪支队赢了”，而是它如何把一项体育赛事变成一场能够持续发酵的城市公共事件。</p><div class="conclusion-points"><div><strong>第一，</strong>城市身份被可视化：队名、主场和地域梗让每一座城市都能被迅速识别。</div><div><strong>第二，</strong>公共情绪被放大：热搜、短视频和玩梗让围观者变成参与者。</div><div><strong>第三，</strong>流量被导向城市空间：从球票到客流，再到消费，苏超把线上注意力变成了线下停留。</div></div></div>
+    </div>
+  </section>
+
+  <section class="section sources reveal" id="sources">
+    <div class="section-title"><div><div class="eyebrow">DATA NOTES</div><h2>数据来源与口径说明</h2></div><p></p></div>
+    <div class="card"><ol>
+      <li>赛事结构、13城组队、一城一主场、85场赛程：新华网江苏频道《2025年江苏省城市足球联赛5月10日鸣哨开赛》<br><a href="https://js.news.cn/20250509/cb78da3713084b708eb4905fce7f31e7/c.html" target="_blank" rel="noopener noreferrer">https://js.news.cn/20250509/cb78da3713084b708eb4905fce7f31e7/c.html</a></li>
+      <li>全季 85 场、场均 2.86 万人、累计超 243 万人、话题点击 1041 亿次、决赛 62329 人：求是网《“苏超”：推进城市文化建设的一记“好球”》<br><a href="https://www.qstheory.cn/20251114/31394d084e2e44fc8d6b0adf3f9bc753/c.html" target="_blank" rel="noopener noreferrer">https://www.qstheory.cn/20251114/31394d084e2e44fc8d6b0adf3f9bc753/c.html</a></li>
+      <li>热搜频次、171 个热搜、29.34 亿阅读量、常州 50 次、南京 38 次、南通和苏州各 16 次等：新华社《数据解码热搜中的“苏超”足迹》<br><a href="https://www.xinhuanet.com/local/20250714/33f880030c4147ac9a30a30539c45a14/c.html" target="_blank" rel="noopener noreferrer">https://www.xinhuanet.com/local/20250714/33f880030c4147ac9a30a30539c45a14/c.html</a></li>
+      <li>第 11 轮中签率：苏州市人民政府《“苏超”第11轮抽签结果出炉 苏州vs盐城中签率10%》<br><a href="https://www.suzhou.gov.cn/szsrmzf/dstx/202509/4af0b22d38424820a0c979894271485d.shtml" target="_blank" rel="noopener noreferrer">https://www.suzhou.gov.cn/szsrmzf/dstx/202509/4af0b22d38424820a0c979894271485d.shtml</a></li>
+      <li>四分之一决赛中签率、南通 vs 淮安 3.3%、决赛 1.2% 等：新华社体育频道相关报道<br><a href="https://www.news.cn/sports/20251009/3ac9f87359814e4ebfaf445916573fd3/c.html" target="_blank" rel="noopener noreferrer">https://www.news.cn/sports/20251009/3ac9f87359814e4ebfaf445916573fd3/c.html</a></li>
+      <li>常规赛 211.89 万人、淘汰赛场均逾 4 万人、服务营收 379.6 亿元等：新华社《“苏超”决出四强》及相关消费报道<br><a href="https://www.news.cn/sports/20250810/91c760eed148426c902011f7976eb4fd/c.html" target="_blank" rel="noopener noreferrer">https://www.news.cn/sports/20250810/91c760eed148426c902011f7976eb4fd/c.html</a></li>
+      <li>南京 27 亿元、异地文旅消费 17 亿元：人民网《中国经济周刊》<br><a href="https://paper.people.com.cn/zgjjzk/pc/content/202507/30/content_30093317.html" target="_blank" rel="noopener noreferrer">https://paper.people.com.cn/zgjjzk/pc/content/202507/30/content_30093317.html</a></li>
+      <li>徐州 30.79 亿元、同比 48.55%：新华网《接住“苏超”传来的文旅好球》<br><a href="https://www.news.cn/fortune/20250630/f6e856584d7245388b6054ed6aab3f36/c.html" target="_blank" rel="noopener noreferrer">https://www.news.cn/fortune/20250630/f6e856584d7245388b6054ed6aab3f36/c.html</a></li>
+      <li>抖音播放 370 亿、团购订单与销售额增幅：中国江苏网 / 交汇点新闻<br><a href="https://www.xhby.net/content/s69080619e4b03d5425651a26.html" target="_blank" rel="noopener noreferrer">https://www.xhby.net/content/s69080619e4b03d5425651a26.html</a></li>
+      <li>常州玩梗、常州发布视频播放量 160 万+、消费激增 25%：荔枝新闻《输赢之外再看“常州梗”》<br><a href="https://m.jstv.com/news/2025/6/17/1384534330923180032.html" target="_blank" rel="noopener noreferrer">https://m.jstv.com/news/2025/6/17/1384534330923180032.html</a></li>
+      <li>端午三天接待扬州游客 15 万人次：江苏经济报《“苏超”踢球，赢在球外》<br><a href="https://jsjjb.xhby.net/pc/con/202506/11/content_1455905.html" target="_blank" rel="noopener noreferrer">https://jsjjb.xhby.net/pc/con/202506/11/content_1455905.html</a></li>
+      <li>赛果表：南京本地宝《2025江苏苏超联赛战绩一览（持续更新）》<br><a href="https://nj.bendibao.com/xiuxian/202563/173134.shtm" target="_blank" rel="noopener noreferrer">https://nj.bendibao.com/xiuxian/202563/173134.shtm</a></li>
+      <li>2024 年 13 市 GDP：交汇点新闻《2024年江苏13个设区市GDP出炉》<br><a href="https://www.xhby.net/content/s67a59857e4b0a731ead7512a.html" target="_blank" rel="noopener noreferrer">https://www.xhby.net/content/s67a59857e4b0a731ead7512a.html</a></li>
+    </ol></div>
+  </section>
+</main>
+<script>
+const $ = sel => document.querySelector(sel); const $$ = sel => Array.from(document.querySelectorAll(sel));
+const tooltip = $('#tooltip');
+function showTip(html,x,y){tooltip.innerHTML=html; tooltip.style.display='block'; tooltip.style.left=Math.min(x+16, innerWidth-310)+'px'; tooltip.style.top=Math.min(y+16, innerHeight-120)+'px'}
+function hideTip(){tooltip.style.display='none'}
+const mapImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAksAAAIdCAYAAAAtajnoAABLlklEQVR4nO3deZxkVXnw8V/Loog7rpFERT8ao9FEiVtqBFlecQybIzKQcRzFqGiCQIDIC7xIhEgQF1DkhYAZR5RlGB0gGfFlE6ZVjLiRuGBQ0GAAETEiu1LvH6euVV1dVV3Vde895977+34+/enuquqqp7ur7n3qOec8Z6bdbiNJkqTBHhI7AEmSpJSZLEmSJI1gsiRJkjSCyZIkSdIIJkuSJEkjmCxJkiSNYLIkSZI0gsmSJEnSCCZLkiRJI5gsSZIkjWCyJEmSNILJkiRJ0ggmS5IkSSOYLEmSJI1gsiRJkjSCyZIkSdIIJkuSJEkjmCxJkiSNYLIkSZI0gsmSJEnSCCZLkiRJI5gsSZIkjWCyJEmSNILJkiRJ0ggmS5IkSSOYLEmSJI1gsiQpNa3OhyQlwWRJUipWA21gY+ejjUmTpASYLEmKaTtCUtQGtgRmej6WEJKm66JFJ0nATLvdjh2DpGZpAW8D3tj5/pWEpGiYq4H7CImVJJVu09gBSGqUKwnJ0aWE6tE4DmF0MiVJhTJZklSWNnAe4ydJmdkCYpGksTkMJ6kMLUJ1aNJEKdOe4mclaSpO8JZUho2ECduTWEVIkm7NPRpJmoDJkqRpDVve3wIOpLuabZLhtDuA/0uoJl3euWzpYoKTpGk5DCdplD2B2xie6CwBdgWe3fnc/wbsF8APgZdM8Jht4E3Amr7Lvgq8bIL7kaRcmCxJ6rcn8Nm+y7Kk588G3P5B4BJgLaGKNM2E7H8DvkVoLSBJSTBZkpS5Gfgl8IfAPsA5PdetAJ4P/AvFrk77BvCiAu9fkiZmsiQJYD2wO3FXnE27Yk6SCuEEb0kAmwOfjxzDkcytZklSEmxKKSkVr2by9gKSVDgrS5JSYrduSckxWZKUgj2Be2IHIUmDmCwNN6zRnqT8vRO4KHYQkjSIc5YG+x5h+TS4MkcqwzOAr8cOQpIGsbI02GOA7Ttf21tBKt4zCc0oJSk5JkuDPRn4befrL0aMQ2qSm2IHIEmD1D1ZagEHL/JnZ4GfAb+XXzhS0u6KHYAkpaiuHbxbwCnACwh7Wj2u57rzgI8yeolymzBXqfePcwHwMOBe4MQFfl6qmuw539THl6Sh6lZZahEOuhuBvyMcfLfqfJ4hNLx7MnBa53Zt4MvALn33kcl+7rN0E6WHACcTEiapDr4BfCR2EJKUqjpUllrAXxCSIwgJ0bhVnxawEvirzvdfBR4PbAk8ZYGf/TahcuW7YVXZMsJr5yWR4/gO8LzIMUjSQFVLlnYA9gde33PZRcDTgHeRz9DYocAHxrxttvHnG4GzcnhsqWypDH+lEockzZN6snQr8MS+y74AnABcXn44Q7UJk2MfETsQaQJtJqvEFslkSVKyUp6z1AauJRzMZ3o+diGtRAlCXB8nxGznb1XBscAPSCNRkqSkpVpZehdhOOzpkeOYVDYsdxWwXeRYpFFSquRkr5tU4pGkOVKtLH2Y6iVKEN6lzxA6ESeZhUrAhYQVnpKkMaSYLH0DOCx2EFN6N2GIY23sQKQhtogdQI8nxA5AkkZJLVlqAX9KPXq+XEt6f18J4AHSem4+C7gB5/tJStSmsQPocxzwT7GDyMlmwOaxg5A6VgMPBe4BXkdouZGKFwH/hZPNJSUqtQnebcKB/HOxA8mBk1aVkjbhjchWne+XRYyln68VSUlLMVlKpe9LHn4EnMr4TS6loqSekNwEfKjzIUlJSTFZSvVgvlh1/J1UPS3gTMLiiQsixzKMrxVJSUppkifAF2MHUID3AjfHDkKNNws8m3QTJYC/JVSYJCkpVpbKcR1wCGlNqlWzXAO8mPRfX23gHOAU6jMcL6niUqss1dVzCI0AV0WOQ81yMSH5aAOPI/1ECUKMzyDMr8piX4NtBSRFlFKyVPeD4QzwQeDXsQNRI7SAV9PdU3GbuOFM5GV0494ZeBpzk6erGe948XbCAgtJmkpKydLWsQMowVaEeRlJjX2qlrIhrKq/CbmUsM/iDPBK4DXAN5mbPN0OXNLzffbxf4EXdr5eXnbgkuojpTlL1wB3Aq+KHUgJdiUMy1VhWETVlL2wm/AcOxQ4npAgfgS4jfnzne4mHF+WDbhOkkZKJVlaC7yeZhzYM9cQmm8eFzsQ1c564OXAkyLHUabeA9m1wAtG3LZJxxlJOUhhGK4NPEjzDmDbAsfGDkK19UTgbGAdzdjQeabn4+PMb5FwV+eyr5Ycl6QaiF1ZSr2rcNE+Qdifb2XsQFQ7FxKeW3cR9incnea+zlqE4be9gB8S5j7dQLUmvUuKKHayBPXb4mRSde0tpfT4XOvybyFpbJvGDoCQKDW5uvSXeOBW11pCJWhL4FeEIeonAncAe0xxv1dPHVl9fAf4+9hBSKqOFCpLEJKFVxKSpiZqenVNQZswbDYL3E9IlDYHfgPsBGzB5En11cBLgXcDJ+cWaTWtBP6HMAHeNyeSxpZCZQnCpMuX0dxk6bOYKCl4xIjrsv5BFwH3EJKnXzC4M/zxwN8B/0h4bSl0AreKK2liqSRLL6W5B3QP3gI4F/jkAreZIVRFAB5KqDw9jrnPocOBfwCuwudVv6yCK0kTSWEYrskr4kyUpnMwIWH4SOQ48jDtcyF7IX8feO704dTO8cCehH0aJWkiKSRL6wjzNJq2fL7JSeI0bgMe3/n6p8B/Att3vr8FeEqEmBajBRxGeO5nW3FM+1xo4XDuML4xkbRoKTSlfB1weuwgIvCkNrkzCIlS1nxwa8L2ONn3X6Y6++4tIWx782jCnLU8TuQ+p0ZrEzbWrfp+eZJKlkJlqX8lWAvYETgmWkTlWQdswnRLwuviVMKmqbcy/KS/hjCpea8R99MGfg58CXgkYT+wXo8Ejh7xGGWxsli+FrAaeCZwHrB31GgkVUbsZGlf4NPAL4HH9F13EbBbyfGUbRXwz4QT5mrgTZ3Lm3YCPQPYb8zbns/oZAlCEno/oVdR/yKGVxO6Nz9rkgAL4tBQPNl+lD+jWXvoSVqE2KvhPgP8CWFrht53+ucShifqbjUhWWoT9q3KTpxraNYcru8CPwae3vm+f+5Ni3BCew3w1jHub9kC17cHPEYsqcTRNFnCfQDh+fBN4EXxwpGUshTmLB3G/JPFQwhdi5sgm2+zR89l3wJuihFMJP8NPK3n+/7nwyyhWjROojSOrGt8CraNHUDDnUx4/V0L3Bs5FkmJij0MN8qNdE+gvwQeGy2SOJo0RLML8HnK/X1jdU2/jTA8eBdwH2GSutJgJ31JA6VQWRrm6XSrLt+iOqucNLmmVBHbhCraw4EnYKKUmpQqjpISknJlqV+TKi3QvHe5Zf5/TweeD7yipMfLNO05XEVtwia7R8cORFI6qpQsrSGsmKv7CrnMlYQqxD453d9OhDkZqSZfZSYSMZKWpcC/RnhcTS47KO5MaGchqeFSHobrdx2hiV9THEE++1i1CAf/MwhDDOtyuM8quxF4Z4TH3R74eoTH1eRmCK+9M+iunJTUYFVKlo7rfD4gahTlmQWeOuV9tAkJ0hK6c8Cyy5uoRVg0cGqEx76QMLFb1TBLeM1k85hMmqQGq9IwXKZN2B5ioV46dZDH5qqDfv5HwFfJb4gvD2UNjWVP+J8C7yL0tyqLc5aqK+u4Ds2aSyiJalWWMjOELUIql+UtwgPAgRP+zFrC36YN/GDIbb4GbL74sCayaoLblvHOPVtheRzwQbp/q11KeGywOlFVs3SH59ZgpUlqlComSxAaOL6WcMBaHTWSYm1G2OdsXC3CFg5ZQvCcIbd7JCHhLNqNwKGE/9OtDD+5tAh9h8p0KmHLkxnCc+nzhDgvKfAxzye/xpqKYxbYBofnpEaparIE8CvCiW5L6l1lOmvM262nW8VZ6OC9lHwmjy/kacDzCP+nj9E9ufRPMp8l/B+fUEJMg2ygm2A+Ezi4oMc5ie7+f6q23kpT9rxu0gIUqVGqnCxlcwb2Ihy02oQhqCbavfPxaMJ8rnHmU2xFsUnm0r7v30c3IQG4ovP4WT+bnzJ3y5NYngF8qKD7dp5L/fQmTSdhpUmqpSpO8B5lDWFopexmg0U4HNiP8PuMY7GTh4uadNwmDJeOmkC9HXAe3Q7e/wy8pYBYJlH0JOzbgD0xcaqr3ongTuaXaqLKlaVBVhL2kFsfOY48vB+4nu4E5IV8nlBdmlRWlSvCQivNrgSe1InhlcRPlFYBPyz4Mf4LeFXBj6F4eitNtXonKjVZ3SpLAHcTEoc6tRa4HvgtwydsZ//EadsM/CPwninuA8I76xMJQ4LPnfK+ylbG0v6mbWPTdLaLkGqgbslSHklDqoYddNcThrMem9NjnA/cQ6jSjes64Nk9319EtbalyYZOyurzVMfnp4ZbS9g25bTYgUhanLoNw2W+QXf46svAvnHDKdRDCMNZeZgBfgO8ETi777oWcOyAn2kDXyJUS7IJ3FVKlKC8ROkm4G9LeBylZS/gvXSPSW1C9dWJ4FJF1C1Zyk7WL6I7b+DrwKfpHqS+B9xBWL5elYNVC/hiz/e9K802J98Gk/sQVtQtZ+7BfWPPZdnS/9WEStRbqP6w0ooSHuOpFLfSTmn7NN3j0xLCXoFZy4E2cDXltPOQtAh1G4YbRwvYGjgEeHHP5bcQ5gVtHSOoMdzI3KX12byXdcCjCDuk5+lwuqt6Hsbc3dfPBd7Q+fqtwJk5P3YMd3Q+5zGcOchaQtUupS1mVI4Ww99MtAgNYt9J9zUFcAOhJ9fGQT8kqVxNTJaGaRH2CltOunNKdiK8I30y3U7QdxOqO5PMMdJgqwjtC4pqpfDXwClT3s9SQkPWqlfyNNoBhK2OnkG6xyOpMUyW5tuPMDfnKbEDGaAF/D9gi57Lfkq61bAq+jLwH8DbcrzPAwmVzGn/T8sJQ+c/wWSpKXYibMFzH6HCKykCk6XBbiNMxF0TO5ABjiJ0v/ZkWYy7CYnSuNvMjGPcdgH+bzXMKkLV82vAS+KGIjWPydJwLvFupkn6IK0fcvkDnc+bEYbNNiM8l5YS9qHrtwNwed9lKwjz1IbFsV3nfi8dcn1MywlVkNWR46ijE4CXEjbYrlMvOSlpdVsNlyc78DbXOIlSG3g53dWIvR+P6XxsDlxMN+n+FYNXYN4/4LLeyta+wP59119JSJSqsqKzaVqEhRB5O4yQKN9BtwWBpIJZWRrtDMIWIk8YcZuVwJ3A50qJSEUbVFG8kNCo8yGEJGhbQguKxe5BuB3wfKaf7A3hpDyDq6ZSk61yy6sH2jDXEFb1HgR8pODHkhrLZGlh9xMSonM637cIB6bXDbjtFwiVhI+UEpmK0J8sXQk8E7iWkDBtRhhmm3YIZNRy8ipZTahyHNRz2fHAv1CP368q7gDuIiwkOGeB20qakMnSeHr/SA8C/0qYO9B/MtgT+CBhuS8456lqdgAuY+7/rQpz11YCPyJectKb+LWAv2D6PQa1OPcCD8X9B6VcmSyNbxndztXjaBM29F260A2VjNMJ/68vEU44uxOS401iBjVEizAc+BHqU6VSfrIDu0mTlAMneI9vkkQJQqPIQRN3la630R1ugzCsmmKiBOEE+JGer6ex05DLlzN/xV8LJxWP6+0RHzvbVmUjYX6dpClsGjuAGtsMm8hVUdMqgSsIq+3uZX7SdQ5h899ee1PMKq+62R+4LnIMs4SkaRVhK6efkWazXSl5DsMVZz0hWdolchyqp95h4RawDWk2UVU6DibMqfwKi1/JKTWSw3BSNfVuuvpY4JWxAhnA3k9p+hCh0nQJYU6TybU0JpMlqXpawPd7vr+I7sbK4/58kXYGjij4MbR4RxOSpi0JPcQOjxuOlD6TJal6ZgknvIUcDqztu+x04Em5RzTX0TTz2NICjokdxASWAbsR5q21CXPXJA3QxAOa1BTvB07qu+xyJl/ZuRjvK+ExlI/nESpNZ9DdG1FSDyd4F2c9TvBWfnYHbseeOSpeG/guIYmShJUlqQpaDO+FlKoLYwegRZsBHs/8HltSY9lnqTi/BW6JHYRqYZbqVZROiB1ASeraPf3rwOaxg5BSYWWpOA8CL48dhBRJHROIfi1Cw0dJNWdlqTh7Ecb+78d3aGqWFmHFXRkTyWOaYbKWDZIqyspSsWYI2x60gdVxQ5FKMwvcGjuIEmyMHYCkcpgsFe9MQtL0OMI+WwfEDUcVsz52AIvUhGG4OvsN3Q2lpcYzWSrPbsDWhDkO9mvQOFrAzbGDmEKdtj35KPX6fRbyNeBpsYOQUmGfpTjawJtxaE71dixwZOwgctACtgIuiB1IydqEqrjUeCZLcXgQUlPUdWl9E3ickjochpNUpFngw7GDmFCThttG+QKwJnYQUgpMlsq3CvhZ7CCkEh0UO4AJXIHVlMyxwBtjByGlwGG48t0OXITN7KQUOWw4l0NxElaWYngcJkoaTws4OnYQOWoBZ8cOYgEmSnPdAqyMHYQUm8mSlK4nAHfEDiJHs8DPYwfR8WFgRewgKuDTwH6xg5BicxiuXMuA87GsLcW2HDgndhAV4VCcGs9kqXzZH9yDT1pSmKvyZeAVkWOQ+pksqfEchivfDPBa4F7g4sixNFnv8vBVhA7r/d5VTii/cxguW1d6fgocHDsIKSaTpTg2AA8DvkV413ZS1Gjqby1waM/3l/Vdfz1w4YCf+zZweFFBDTBL/OpWkVJLBK+OHUBFLAc+GDsIKSaH4dLwbeAFhOrGRZFjqaMUhtgEpxMaHa6LHQjhOfEq4H2xA6kIh+LUaCZLabkDeAwelKZxBvDW2EFoKBPXavoGYZj40tiBSDE4DJeWxxIqS+sjx1FVLeDHBT/GnsAlwBEFP05dmShV03/gc14NZrKUnruAB2IHUVGzFD+s8jlgZ+C4AdetJKxom3Qy7K40M0FOZQ5TC7gmdhCJOx3YPnYQUiwmS+nZHHg9cC5hIrimU+YJeQ1h6f+HBlx3BGH146ohP7tHMSElbY/YAXTMAtuSTvKWIiuCajTnLKVpPfArwiaWewAXLPJ+1gGbdL7eY9qgKqYFHEJoAnpW5Fg02GrCXJiTI8eh8dwLvBs4LXYgUtlMltLVAjYShnzGnVS5O93Eqk0YzrsA+DPgaThxXGlxsne1ZMckjyNqHJOltN0KPLHn+58R3oVfyfyTTBv4JWHjyz/sXNZ7UDuRMERkh2hpMJO3hdlCQI1kslQdLWAJYWhpi84HwA+BZzL3ADZs36t25z7GPSF48lBTfAN4UewgKuAEwoKE58YORCqTyVL1HQp8YILbj/PO8FjmLhOuwzvJ7YDfYvKXqhbwx8CpsQPRgqwuqXFcDVd9kyRKECpLwzLkNZ3rXk44GM4AnyKszKu6ZwDPix2Ehq44myUcjwZd3xrxcyrfx5i/ZZBUayZLzTMLfJ1QTs/cRkiSHkVIkHbsuW4l8AbgqBH3WYUT2fXAd2IH0XAtBrdVyJzC/MrfcsIKrGH3t10OcWkyfwPsEDsIqUwOwzXX9cCTgS2BNxOWcY8yrPS+HDibMEdqnxzjU/3kPQduA7A0gTia6Grgi8B7IschlcLKUnM9C3gtIQFaPcbtz2HwfJJsIvl9DB/ei6kKVa+myDtBGZQorVngZ1qEyki/E4F9p46oOV4G/F3sIKSymCw125UT3HYf4B0jrj+HkHi1CZWmFJxKmKOl8sWaZ/STBa5/BLD3gMvXA8tyj6beLiAM00u1t2nsAFQp2eTw3uG4d3U+X9z5nFWqUlgx82kcbollF8Lxpey//5ELXH/xkMt9nkzufMICkIWqeVLlOWdJkzqb0ONpD+Buwsa/Txhwu7WEyqXv1pspqyqZhNTbpL3bpEpyGE6T2gd4PnA/cBCDEyWAzeg2zlTzzBL/BHo28OHIMdTdEsIWKFKtWVlSUdZ1PqdSWTqbMGywbqEbqvGsik0mhSF3qVDOWVJRtgQejB1Ej4+T5mo9paUFvKrztcnSeN4N3Aw8JXYgUlGsLKkoFxOSpcX0wVE1nU6Y7GuS0TxWl1RrzlmSlJe3AdvGDkJRfJJ6bIskDWRlSUVJvbK0HrgIODNyHEqfc5jGY3VJtWVlSUU5Fviz2EGMcCImShrPq+jOY9Jw3wUOjR2EVAQrSyrSzcAHGL15agreDpwWOwgly8rS+KwuqZZMllS0Khw8jwDuBE6OHUjCDgAeCRw34Do3plWmDWzPZFspScmzdYCKdiRwK/Ck2IGMMCgB0FzXA78acPmFwFcwWVKQNalM/Q2SNBErSypDG/g6cBPwQM/le8UJR0O0gFXADZhAanGOAv4et0BRzTjBW2WYISRKAI8jPO9eT5hkrXTMEjZBNlHqzlNqjbyV+l1BaFLpFiiqFStLisUNOJWyrJP3+2IHUlFVmKsojc3KkjSXlQRBSOJNlBbvncA3Ygch5cXKkmK5DnhO7CAGWAPcQRhKqLtjgKNjB6Hasrqk2jBZUiweSOM7GzgFh0JVjA3AzwiLBqRKM1lSDC1cXqy0tIBNsD9Q3nxTpFpwzpJi2BH4QewghnDOUvMcS3hOmijl63hCG4rDYwciTcvKkmK4GTiP9OYFHQ38IbBP7ECkGrG6pMozWVIMbeCV2ItFagLbhKjyHIZTLGbp8TjUqDJlW6BIlWWyJDXPMbEDUKNYUVLlmSwpFg+g8VwcO4BEtLDKVpa/xGqyKsxkSWWLeXJa1RNDk0+SH4gdQCKOwaS9LH8SOwBpGiZLKtvOwPdzvs9VC1y/kvCu9mOdzxuBDzE/YWp6EtU0n40dQIMcRnj9uQWKKsnVcCpb3suI28DlwA6d719L6BycuRl4JPCIvp87FXhHz/dnAncBPyYkUpLyZxsBVZLJkspUxIGy9z53AT7fc921wFksPOzUIiRIjwOe2bnMA7qUv0sIjSrfFjsQaRImSypLi9D0cecFbncg8OfAQ4EHBly/Refz/wDLO18PSmyWAesmjhLWAq8fcp91kQ01Ol9HMVhdUuU4Z0llmQV+CZzbd/lq4HuEA2gb+AfgMcCmwJYDPn5DSJi2AM5h+EF3MYlS9s6hCQfyw2IHoMb6JbBf7CCkSVhZUtn6n3A3AO8F1pQfyhwnAIfSjEQJFl95q4OLCUO2imMnwnBcU15rqgGTJcWwH2FCdUp2B9bjAbzuDgW+gkOQsbUJmxdfHjsQaRwmS1LXj4BtYgchNcDZwDOAl8UORBqHc5akrmfEDkBqiC8CL4odhDQukyVJUtn+E9gsdhDSuEyWpLnq3sG7RViBWPffU2m7P3YA0iRMlqSubwLbxQ6iYLPAd2juBOfVsQMQ0H3+LR95KykRTvCWumyWV2+rWXgfQZWnDWwPXBk5DmlBVpak4HTqmyg55Basih2A5jFRUiVsGjsAKQF1rii1CA03XxE7EEmqKofh1HR1TpQUnAvsHTsIzeNrT5XhMJyazIN1M3w0dgAayiFiVYLJkprqMuBjsYNQKZq68q8KNo8dgDQOkyU11eOB+2IHodLsi1WMFD235+sN0aKQFmCypKbaCvjv2EFE0NSE4TNYYUrN5cDze75fGisQaSFO8FZTtYElNO8Euo6QOKyLHYiE8wZVESZLaqqmJktSSs4FHgT2iR2INIrJkprKd7TNcwmwc+wgNI+vRSXPZElN5QFaSoevRyXNCd6SmmKX2AFoqM8Ca/ouc3WckmGypKa6K3YAkRwVO4CI/jh2ABpqGfDGvstcHadkmCypiVrAD2IHEclOsQOI6AOE/31T2yekbglhOE5KjnOW1FTOkZDSsx74OfDWyHFIc5gsqYlawEZMlqQU+UZGyXEYTk2wpO/7R0SJQtI4ZnA4TokxWVLd3Q1cRTj4nt257KnAL6JFpFR8grBn3H6xA9E859BdHbcrzjNTZA7Dqe56S/prgNcCjwMuxQaFUsp6X7st7LaviKwsqc5awDd7vl9J2ED3jTQvUWoBh8cOQppA73CciZKiMllSnb0PuHLA5WeVHUgiXho7gAq4Aod8UnIesDp2EJLDcKozV9VoMRzySYuvY0VnsqQ68yAr1YOvZUXlMJzq6sOEVXDSYl2CQ3KpOA9YGzsINdemsQOQCnIg8/srSZP4Og7HpWJv4Nuxg1BzWVlSnXmi67JCMlcLOJjRf5f3lBSLxnMecGPsINRMJkuqoyMIVQEFK2n2XlvDWib8ptQoNK3jgKfFDkLNZLKkOvoP4MWxg0jIj4BVsYOI5FTCPoD9ZoGTmV99PKrwiCRVjqvhVFeuntEkWsBuwGGxA9FIbcJcRIfYVSorS6qrB4AVsYNQacaZgzSKJ99quBw4JHYQah6TJdXVZjS3U3emjpO6jwb2H3LdtHOQrCql74PA7rGDUPOYLKluWjgE12vNwjepjF2BHxPmIfUbNgdpGqtyvC/lYwPw3dhBqHmcs6S6WA08FFiOiVKvE6nesMUxhFVPqyLGcCpwKXArDtGlxjdDKp3JkuqiDXyKsExe1bYcOCd2EErW7YRNsj8SOQ41iMmS6sR3nFIz+FpXqZyzpDq5C9g3dhAJODR2AFLB3grcHTsINYfJkurkC8BnYgcR2TrgK7GDqJmLYwegec4EbgEOiB2ImsFhONXFKuCfsTRfJx8GDoodBGGFpZO803Q18GTga3RbR+wTLxzVlZUl1cU/A6+PHUTJlsYOICeD+kG1SOv4tLzv+2VRolC/lwHfIvRVewB4A2E+k5SrlA5G0rTWxQ6gJC1Cv5lfxQ4kB6cCfzHg8lng3SXHMsws8Mu+y55NaHGg+PbofKwENgF+QT0bsioih+FUB5cBfwJsFTmOstRpWGgnQj8jKS9f7nxUrb+YEmaypCr7dufzC3CukqTAzXaVO4fhVFUXAn8AvJD6Jkotwu9ZJy0cIlHxTJSUq01jByAt0l3AlbGDKMFusQPI2cOAB2MHkYMs4fOknBYTcRXCypKq6iHU//lbxxPxvcD9sYPIwUHU8/9TdS8iTPCWclX3k43qa1PCLvR10CJMSG2CWeqRZNg6IE1bA3dghUk5M1lSVS0jvIP8DnAzcGPUaKazDfCK2EFoYp6Q03MR8MzO1/5/lBuTJVXZVsDzgKcQKk135HCf1xNW0yy0xUV/k8JprMnxvlSebWIHoHk2dj7XpYKpRJgsqS62Bh4z5X0cS2j0OAP8jOGdgA8GngHsMuC6Uau9WsAnpoyxLo4BPgqcETuQKWRJriv8pJqzz5LqpM10bQT6f/66zsckK9KWA/+L0Gixf1PfE7FRXl0cDHyo87Ur49Iy7XFAmsfKkurkBkK1YjFuYv72GjcxeXuNc4C3MD9RAhOlumjRTZQgVBhNlNJipU+5MllSnWxD2IH8wAl/7mjgqcDJfZf/grDM/fSpI9M4eofkWsBJsQIZYdBJ+AulRzHfwYTVoSYJwdZUe4hXiTFZUt3sRZh7NM5k7zWd272XwWX7h/TcTsW7pefrWcIu8qn5A+ZXkTYOumGBWsD+fZd9iLAS7BElx5KizxOGwwdVd6VFMVlSHT2CMKQ2aELedp3L28CjgMcyfH7DFoTXiEMs5biYuZWRFIctR52AJ5novZgKUAs4ofP1qUNu07+K84hFPE7VrQN2By6PHYjqw2RJdbUG+CbdqtAnCAnSFwmbbM4Ae8QITEPVdbn3oMTo6Z3L++fYZcOPLeBdfdfNAocx2d/ouM599SeidXZd7ABUP+4Npzq7AXgjsDMhSZp0hYxvJtRrOWEC/7hWEvYwfDzzE5yzOp/7Ly8iYZxleJuLOiandfydFJknA9XZMsKy/6cA+yzi5+uw4Wud7AecG+mxD2CyRAngR4QhodMW+ZhFn/RfREiY1tOcqpO0KPZZkobbQFgNt0fkONQVqxpyGbBjhMeN4XDCpPUqV2jstaRcWVmSFua77nTEOoEfHelxY6h6opRpMXkbEWkgkyVptC2px4lD02nSc+DE2AHk4PuEIfhrYgeienAYThpuA/AbJtvuRFJ8LUKFzKE45cLKkjTcb2IHoOQcBawgTDZXurJKoEPoyoXJkjTa5rED0EBXR3rc9wE3Yi+fKlhC+d3VVVMmS9JwWwCvJiytVlpeRryqQV2bZ/ZaGzuAHFhdUm6csySNtgF4DfBz4AmRY5HKkiUYVU8KnbukXFhZkkZbSjjQPj52IFKJNokdQE5mCRs012GFnyKysiSNxyZ36nUiaW70q8HawKcIW9BIE7OyJI3nm8C+sYPQHDHnohwS+fE1meyNjtUBLYrJkjSe/wR2jx2EfmcZcFDExzdRqp6VwCeBW2MHoupxGE4ajxNFpXpwSF0TM1mSxudBVk3RIvQYuzx2IAW4G3h47CBULQ7DSdLiHBg7gILdHzuAgtwAHBM7CFWLyZI0vh8Cl8QOQsmo8yatda6g/iNwQOwgVC0Ow0mT+RHwC+DHhEnGaq7DgffHDkKL4pC6JrJp7ACkitmm83k13WXIdTjorgd+S2hG+BBgt6jRDHcu8E/ApbEDwX3HpMZwGE5anFWELVDq4HpCW4T7CQnTriy8H14LWN75ev/CIpvvPNJIlKD6W4EMsiR2ACX5BbAidhCqDofhpMmtA/6UMPfhtMix5KENvA64jZAAnE1IhGYISVFvUtAi9Dd6Xd99vIN6/C2abgfquQKun8NwmojJkjS+rKndOcA+kWPJ06ATx28Jlecfdr5+ds91FxC2+8iSqKaeePoTSVVDG3gvrojTBJyzJI2nDdxDc5KCbCPV7YDHAZ+LGEuqNiEMW1Vl7tKedKuH/bYDngVcN+T6uti18/myqFGocpyzJC3spM7nOjWy22nM213J6ESpRdg3r4muBDaLHcQEbut83o/5c5N+n/onSgAXdT7X/fdUzkyWpIXdAPw0dhA5Op7QL6rd+fjBFPe1C2H+1hpg7fShLSi1PdkuB07t+b5FqNIspTsBPhWznY8zmV8NO4vmJBA/o/4NRZUz5yxJC6vbvnDZ77MEeA7h5DmNC4FfAm8E7gIeMeX9jXIZsGOB9z+tLJlLLfFYQkiMU4srhrq9nlUCkyVpPHWbxFzU71P032kVoceVNI26vZ5VMJMlaTx1O7gW9fv8G/CSAu5XytO5hAUbZ2C1TWNwzpKkPP0e8K7YQWigFmGOmWBv4E2xg1B1mCxJ4+tdQfT2aFHk4weErt152xr4WAH3W0V7EiZ6p2IW+HXsIKQqss+SNJ6rCBOZH9Nz2V8B20aJZnyXECZdA2xJmIi9JaHJ5MsJDSbzlk0mrtOw5WL8D2ELmZTMEloHTDupvw6OJMx/e1bkOFQBzlmSxncEcFzn6yqsqFlL6Ke0Edic7ol7C0JX7iKHZC4mJAt753y/ds2eXpUaaRYtS+pTXcWoRFhZksZ33MI3ScqXCHt97RbhsXchnIhuAN6T030eTzhmeUKbjonSXEuBX8UOQmmzsiQtXhv4IHBI7ECGSKH61Qa+CtxJOCFtQZgr+SBhNdKyvtsvJzQM/DtCh+xeVpWmk825M1nqupBQdXXiu0YyWZIWL/V5OSkkSxCGAzcjnJTu7Fz2OMLKuU0JjTGlGEyWNBaH4aT6SqUKs9eI68rYIiWmA4H/AC6NHAfAvsBnYgchVZGtA6TppLQ0vIpeD6yIHUSBfg7cF/HxW3QnL/8kYhxSpZksSYv3NWDn2EFU3B7Ap2IHUaCziDtHaBPgYZ2vU6k0puQB4N7YQSh9JkvS4r0E+JPYQYzQWvgm0RXR5yllZf9PriQMAbaAk3oev0WYTN90m+B5UGPwSSJN51WEid69do0RyABZJaEKSVOTTtynU/7/ZBZ4N93nxCxwU8kxpOiXwEuZO1wpzeNqOCkf/S+kCwhDTLG1CUvGUx6CWQacT/xVe2VJoQXCWkZPvG+S7LXblOefFsHKkpSPGcL8pRnSm4OT+tL8dcA3YwdRotiJUgsTpYzVJI3FZEnKT7Y8/PEU/9rat/OxkHsIwwyp25KwnYyKFztZi60FnECoKG0kVF6tKmkkkyUpf3cROlQPsoZwkF7M+PdOhP3d2sCnOx9t4HpCc73+d8lnEzpmv20Rj1W2b1GNpK7K6t7TalwbgUPpJklNTx41BptSSvl7PLA9ITF6FGHT2kcRkp1sbs6NhCXLly9wX1t07gvgp8BpwN/03aYFHMb8JeqX093iInWb0pzj0dHAMREe16E3+Gjns5UkTcTKkpS/VwHnERKkh3U+/5SQuGQnrBXAF8e4r/8BXkc4uG/N/EQJwjvj3Tq3mem5/Y74rjlFPyv58S7O8b6qPsfni7EDUDW5Gk5SCtYRqmhN6Yi+ClgdOYZJXEzYKuWpwPsjxzKNVPZLVMWYLElKQdOSJcWT+gbYSpDDcJJUP9PMiap7g8bPxg5A1WOyJEn1c/QYtxmUEJ3L+H25Pkw1E6tXxA5A1WOyJEnxHJjz/Y2bvKwk7G3Yb2/gTMZbGHDQBHGl5MmxA1D1NGWpriSl6J5Ij7sDYZL5tKq62jKFLWdUIVaWJCme08i3c/ks4yUBq3J8zGnEGsLbitD3LHYcqggrS5JSMKzjeRMcFzuAHGTJRn+iNuryPyA0cC27wnMtsB74PvCHhJVxjyo5BlWMlSVJKdgLeE3sIAq0inCCLlqsCdezwPMGxPIcQlK0/4Cf+QlwcsFx9VrXiemFwJuB53YubwEbgONLjEUVY58lSSloAYcAvyJMPq6TrIrymQGX7wU8n7B6LY8Ky6BKzgbgHzpfP4vimmG2CBPEB3WZT1F28rPnkhZksiTVUxUnsNpdOR9vB77D4P9/i7CxcmoJ6UnAuwu434uBXYZc13/yO78TR9VeNyqBw3BSte3Z9/0GwklgY+fzqCGZ1Ca1Ziep1OKqmtMYfsJ/FPnuFZeHFvB7Pd+P28V9nOfJLSOum+n5WAL8hu7r5kbg1jHjUAOYLEnpO5dwAO9/J9wmdCNuA78FrgQ2o3sCOAg4gflJU4tuQjXshFNWwtIG1vQ9pu/si7MB2DV2EH1m6W4wDSHGUztfZ3OwDqb7/GgBy/vuY9BcrXWMv+pvFtiH7mtnBfD3hOfn+jHvQzVmsiSlrU3YMy07iGcJ0yeAi3oufyewHbBzz89+hNCteAndd8xtYC3wgc5tBq1Sym6zItffZL61zF0Ft5EQq4q1T9/3LWD3GIGMsEnn8+aE5+iHmPtcvYmFk+plUzz+LHAK4bX1Cxau0qrmnLMkpWst8BjmJkAQhlFezeRze3oP9rPM3VA0my8E8LfABxdx/5O6hG6vm68BLwAeVvBjxpB6xawFvKXzUWVrmVuhyltWyZ0mCVNF2WdJStdDgLsGXD5swupC+k/WWaUq6zezhG4SVXSFp3cl0vrO14O236iLZ5FusjQLbBM7iBwUmShBeK6uZe6bDDWElSUpbWUcmHcCLu18nVWYPgk8kZCsbcn4k27HsSfhHXqTTjgHE4aSVA9WmRrGZElKX9nvZNcR5oz8lpAoPYUwRJZnDL47V9WdAexHtyKrGjNZkqohGxqLdVBeB9zP/MnBi9UGdiNMUpeqrE14Hu8WOxAVx9VwUjXMEIbH+vsqlWUZ85drT+uXOd+fFMMMYbi6TXFtGVJrIto4JktSdcwQ5knEfPxhpehJlp4f3fm8ceSt6ufc2AGMsDp2ABWX9Wi6kPAa+Ta2GqgVkyWpemIehD9Lt4kkwNmEk8O5wHVj3sfzgfNyjit1LeCc2EEM4Uk9P1nfs88T3gzcCpyYw/2uWfgmKpJzlqTqSGXvtPsJncIhJADZPKY28Drgcwv8fBMnd29H6LCeqiruJVgFLUJz2Bd3vt8RuDxaNFo0kyWpOmJP8u417OS6UCJ0FGEbiaYlS1Jv49evAoeQxmtZY3AYTqqGt3c+z5DGsMmwg/ynCI37BvkEJkpqrlm6w3RfobsF0TExg9J4TJakajiNUL6/irn7vPV+XB0tuq6VwOsHXNYm9GwyUZJCK44ZQqX4NXRfwytJ482Q+jgMJ1VbC9gKuI8wqfQgwhyJmA4kDDFsTbdxX9OTpBZwJHABcGrkWJSmXQmr6SDslVjn7X8qx8qSVH23EzbXhbiJ0ipCP6Y7gacS3ik/GhMlCEMwuwD/TpqVgxZwQOwgGu4iusN0X6JbbTp61A+pHFaWpPpIbZWZK6yq5cOEyqTS0QJOIWw3ZLUpIitLUj2kWK0wUaqWdbED0DyzwAsJb4IeBC6JG05zWVmS6mENYcPbnUt+3CxJMzGSipVKn7VG2jR2AJJy8WLgnbGD0FhawLbA12neli9aPN+QRGRlSaqH1OYraTircVosX+eROGdJ0rTOiB1AxcySbqKU4tw3zTXJptXKicmSVH37RX78t0Z+fOVnR0yYUnYpsCJ2EE1ksiRV35mdz1lfFqUt5WTkmaRb9RL8mPkd8lUCkyWpHrJmdncB6yM8/p4RHrOqtiXdhGll3/ctuvsSKr7VsQNoKlfDSfXyr8BDYwehoVrANVSjetMC3sb8BErxVOF5U0tWlqR62RTYPMLjfi7CY6pYs5gopSrVymRtmSxJ9bIFcV7XLTyAjyPllXCj+P9Nxy3Ay2MH0TQmS1K9PJkwb6lsj4rwmCrPHxPmWim+DwEHxw6iaUyWpPpYCfwpsCzCY/8Z1ayYFKGOFZh/J8y1UnxfIbwpUomc4C3Vw6+Ba4nX3feySI+bmpMI25jA/ORxNbCqzGByZCKcju1iB9BEbnciVV8b+ABwWOxAGq7F8KTiYODnhA2PpWm4oW4EDsNJ1XZE57OJUnyjqi//Bjy7rEBUa9nzbKeoUTSMlSWp2nyXWS2jqk/SuDYA9wN7RI6jMawsSdWWyom3ykvLp+kltG7C26fy/5pUlf+/dXQibqhbKpMlSXnYmmpWt44AftT5ehdgyZg/twshyVrsysNdF/lzsWwLvDB2EPqdy2MH0DSuhpOq72fEH965h+q9+ToUOK7n+4sn+NlJbjvIHcBSwnBKFdg2QI3mnCWp+q4Gvgq8O3YgiehPHPuHj4Ylla0B128HbA/8PvDWPILre7yqDsspvm8AB+BzqBRVeycoab6Xkl6iNGqOS5HzX47N8b5awGsIPaTyTpRgblVLmtTvAzvHDqIpHIaTqu1W4K9jBzHAI4A3MP9d77HAL4DvL/DzvcnUuO+cW4Thsf7bj/vzvbc7Gjhmwp+flM0FNY2HAA+NHURTOAwnVdcy4HRgq9iBDDHpMNPBhH2vAPYnbLGxFXBB3+3WEdolbA0cMmWMUlW1CQsSHIYrgcmSVD0t4G8IlZsqrkAbZQ3wE+DI2IFojhbhubYxdiD6nTb1e/0nyzlLUrpahL3GbiQcGLOPE4GnUc8D5UrCyrqmOCN2AGPalrBJs9RIVpakdNzM3N3EHwBuB84HzsVyex1VZUXcoJWCisthuBI5wVtKwzWERCk7+NXp5NQCtmH+JrInATcQJny7wWza6vA8rJMW8F38v5TGZElKw4sJy4Czg19dDoKHAv9Ft0t2r3dTncpKkbYDrowdhCplF2CL2EE0icNwUhosqUsalxtol8wJ3lIavoKJkqTxZMcKNzcuicmSlIaXxw4gBzsweLhN1Vdk13UtzhJs5VAakyVJebmfMJFbk/tE7AAWsC31SOjrJKsufRtYD1wInE1406KcmSxJ8dXlHbvDiIuXerJ0DWGoWGmZAX5KaDMCYdL3ZYQ5kN+jPseW6EyWpPhOISwDrqoVsQOogefEDmABs8xPhs8F9owQi+ZaCuwF7AbsQUigZgjtODYSEqdzYwVXFyZLUly3AS8Anhc7kCnsDuwUO4iKO5PqDZ/sDRyA1YtUzdJNnO6iuwPAUTGDqipbB0hxfBt4GHAC4URZN3VqqqnJtAh9gNzfLz0t4GS6W9fsCFweL5zqsLIklevDhHd3lxCGXuqYKEFIkg4hrNhRs8wCFxMmHSsts8CLgHcSEqVsftNNWCEcycqSVLyDgU0IVaSrCB2bJSkVRwF/3/n6PMIQq3qYLEnFy15kdtvVQk4F9o8dhBprJ+CvCfMQAf438P544aTDZEkq1oXAS4EnxQ5E0Y27D5775SkFLWAd8MTO941+s+ecJalYj8T+NAobCh8y5m0fS/3mjxwTOwBNbJbwJm8GOI7Qa6uxrCxJxVoHbEbogdI0y4FzYgehJLSAVcBbI8ehxTudsCilkXMurSxJKkKLelZI8taUv88ssDp2EJrK24BX0pzn7BwmS5KKMAv8O2EVYFOtGuM2OwLLCo6jaC1Ct+hBJ9Hey5yHVX0zNHTzXpMlSUWZBa6MHUQkq4DXjnG7Y4Bbh1z30dyiKd5KBidDzwFOxH5bdfImws4DjeKcJalYbeB1wOdiByIlZF/gM7GD0KK1CY0tT40dSFmsLEnFa3Ki1CJ0Ldf4lpN29+s85qw8CBw/5LrjRzzGqOtUnhng47GDKJPJklScXWMHkIBZwopAT3Dju4mwe3yK1uR0P+cA78npvjLfy/n+NNoSug13a89hOKk4DsEpL7sCF8UOgrBsvKnz0DTf7YQu36fFDqRoJktScdo0s+vtgcAfEVoH7BU3lFo5nFCpK3M1UouQIB1X4mOqWhpxnDNZkopxMGHVyAtjB6IoiqoEfZgwrDnNMvxjCNWhyxe4XTZ06pJ/jdIiJPC1TpicsyQV44N0d/FW86ygmHlaBzE4eRn2WIMuvwS4v+f6Yf2RXj7ksfZbIEY1yyxwFbA2diBFsrIkFaMRpekehwIfiB1EzZ0K7D/kug8DTwb26bv8CuBVY9zvj4DvM141rAob/a7CjuFlaxMmfaf+3FgUkyUpf8uBs2lWsrQfsDmha3fvwbIKJ9Y6W+jvfyJwJ/Xb6PbbOARetloPx5ksScVoAz8HnhA7kMhahE2ED4sdSA2kModoOaG9Qew4RjFJj6O2FXWTJak4RwMvBq4FjowcS0zHEP4WkurtcMJ8vefFDiRvJktS8a4Dnk2Nx/M1z1HA+2IHUaBjgZuBU2IHouTUsrpksiSVIxvPvwt4RORYVJwi+xKlOrT0Lkya1HUZ8DXy79Aela0DpHLMEt5t/R/CO6+T4oajAhWVKKU6tHEKbmejrsuBv4sdRN6sLElxXAFsTw3L1QPErIikWo2ps2NJZ47esYRVmi4wKFcb2Bm4NHYgebGyJMWR9b6p+zvyFvDHkR77JOa3MVDxskRpVcwgOo4Evhs7iAVsR/2em0sIzU9rw2RJiiOVZeB5Wgns0HfZjoSmh3lb6ORyOPDuvstmGd7UsQonqxaw0wLXt4DdgQsHXNf/vynaatL4u66OHUCP3uffGkIF5ouE+YyXxQioINlxLYX/fy5MlqQ4soNJm9EnwCpoETpI/4j5+40V0eywBTyr5/v9mH9Qfv+Qnz0VOH3A/f0BIZnI4+B+PKGj+dk53FevWcYb1riA0Nuq30rKP3nV6c1AHm4hvObbwG8Iw/DZx8c7l/c/P6vqnYQ9CGvBOUtSXC3gn4A/pBnzl4qSx9yklKt9FzI4AZrk994FuDi3iDSJNcAbO18v1EIku+0bgbMKjqtotWkjYGVJimsWeG7n61UR45hEig0ms5PPNKsMZ0kzUQI4YcBlk1aJYiVK6yM9bgqyKtKWdCtICz3HVnZu96nOz1bVUuB8QvJXeSZLUjpWxw5gTJcRmi7GMmpor3ee0hVFB7KAPIe8+k+w5w65PEV7xA6gowW8nfKGve8mzNmbAZYt4udngL8lNLWtog3AP9OtqFWaw3BSfFXcgHJP4DaqcbJejDyG9daxuJNkHaUyxLk7cHsJceQ5/PRb4M1Ut0JzL+FNzGmxA5mGyZIU38XAHcA+sQPR7+wAPJaQ8CzWfsCZ+YQzlRawFWHid8wYIH6yVIYi5ulUee5PFd8MzuMwnBTfq3G7iHFdXdLjXA786ZT3kUKiBCFBKbttwKAYUk6UriSfOV1FJTX/RHUrS7VoI2BlSYrvZuApsYNYhP3p9lA6GHg5sFe8cAq3hPAOuaqWMV2lLA/bERKTFCtNw4Zed2e8qlzR1Z8qV5f2BD5LdeO3siRFtgJ4MtV619Ui9BHKEqUdgH+j3okSwBMXuL6I5pt5ip0oAWwSO4ARhiVue7Jwv7DrKD4ReDNwI9U6VmRuix3AtKwsSfHdytwT8ffpthNI0bhVgVXku8Iv9j5vywj/q0ExLAVeD7yl1IiUgjIrPm1CY9JjSKsqN45PAH8EvCx2IIthsiSlpQWsZfiw3B3AYzpfV6GkfQXdffCmkXXZ/kwO9zVtHFU7SUF3j75/J634q/r3hLClzoGEIbpHA3uX9Lg3E6rRvW4g9GdK/W9Z2aFEh+GktGxk8HDWvYQDza6EuTOHUY2GdXkkShBOArETJZh/MqrSkMj9sQMYYFBX8qp4P/BNwqrJh1Le6/EpzN0mZQnwBcKbrBSGWkf5AWk2tV2QlSUpLW3mbodwBHAs8AFCgpSpxXLcCaU6wfoA4OTYQVRUlStLg8SunJwNLI8cw0Ji/40WxcqSlJYZQkKQbZNwNN1KUq9Z4FrgklKji+vZsQMY4r8I/yNNporzbhYyQ9yK7z49MeS9kXOeqlSRBUyWpBRlpfUZYHOGn1BeSNi6oU01Dj7Txpj1LXr7tIHk7HOkWfGC8DdP9blRyeGYMSwBboocQ3bsSPHYcBFztyWqBJMlKU3jvuPOEqusGpWyWcJGt9MevO/M4T6a4jnA82IHMcLa2AEUYJYwFBb79biM7rFhQ+RYej0IbBY7iEmZLEnVNwv8JfD12IGMIY93lJ+hfsM3RbkO+E7sIEaoa2+uWUKiEjthmiW8obqzE0tqVdnKcIK3VH33Av8DPCl2ICVYQWjMZ7KkKtgVuJB0JjT/Gtiy8/UFhFV0ZTdTXd/5vEfJjzsVK0tStbWBd7BwolSXYasbMVEaR+r/751IP8Y8XAS8lfgVpswj6LYc+A/g43QXk1xBM/4ni2KyJFXXHYSWAqtH3KZFOBCmOqfppAlvb6K0sJWk/679UprzvzwTOI6wJ15KjmRur6Yb6B4nvkM+8wtrw2RJqq7HML+lQK8WoUndP9E9KKaWMG258E0AOL7QKOrlR3SHOlJ1VOwASnYk8A1CZTRFs4SterLjxPuBP2duG5MDYwWXApMlqZrGecc3S9hz7m09l/2ykGgW77tj3KYFvKfoQGpklvSrNld0Pq+KGUTJDgKuovu7p+wsYFu6ydNfElo9XE/oBP9rwmq7xjBZkqrp5Z3PGwjLrzd0Pi7suc1q4Pye77dj/EpOWT40xm1SP/Frctn/9PqoUZRvJWHp/OrIcUzqM4RtXZ4F7EAYVjyfbtXpe9Q8eXI1nFRda5mf/NwJvIHukFv/Kpz+7VRSsRTYnvnDiuuo+UFYjfRlQpWpLhXTUwlJVNZl/xzgFAYfZy4mJIxLywktHyZLUr1kw3NZR+n+ZKl3T7mzCdsjtICXMF6Vp0gtQiL3TcIBVZOr215rdXYl8FVGzzusohZhjtarO98/SJgDdWTn+9WE+ZZ7lBzXVEyWpOYZ9qK/hbCjeUye7BfvXGDv2EFMaCWwJnYQEf0WeDP1/hssBfYDXtdz2UXAbnHCWRyTJamZDgSuYW5iUsndwEuWajK3C9Wrxu1OaIzYdG3gtaS1JUmRVhAmkFeKyZKkTBt4DfFOunsCt5FmMpJpAa8C3hc7kIo7mPjDvilJdS6hOlwNJylzA2GSdQwtwgTRFE8WLbpzwWYJS7+ddD653r+jidJcM4S5hDaBTNSmsQOQlIxrgT+K+Ph/E/GxR3kbYW5NJsWEriqe1/ns33C+GUIrhVX490mOyZKkzEMIK1diSPnk8O+xAxhih87ny6NGMb5B/+MWoX/PRSXHkqpn4dzBJDkMJymzKR4TBvnAAtfnNXQy6f08EviDnB67LP3dxWeBeyLFkqoUtyVqPA+MkjSdZwEnMvmmwL2+vIifuYB6dMBeHjuABJkwJcbVcJIyG4DfUH7/kxSX43+UdOdQ1U2K//8UOByXEOcsSYppLbBX7CD6tIC7crqvLwOfIxxr35/TfQ7Tu2KvSqoWbxmyVgJKhMmSpFiyrVdSlNeeXa8YcnmLMHT3shE/m2IimbczCNtfmDB1WVFKkHOWJMUyC5wcO4gByjpxH7LA9XsBJ5QRSESrgT+OHURCTJQS5ZwlSZkYc5a2A55GvffGUtcSQkJgJWmu3g2ulSArS5JiaQE7k0ai1NtdOnUnUt35LL47n+sY4HZMlJJnsiQpllngyNhBVNCXgMcPua5KSV+T3AjcTLeR6HcIieP2hA2FTZQS5wRvSQqJ22XAjrEDGcPnRlz3v4GlZQWisf0esBnhOQbwQbpbv6gCnLMkKROrz5JURy3gFOAFne9nsKdUZTkMJ6lMhwOfiB3EAo6PHUDNNG1o8GjCENtG4BJCkpQNs5koVZTJkqTMZiU8xveBt5TwONP4l9gBLMJRER+7BewP7Np3+TGd6x5GM5KEdudjV+C9hARpofYQqgiH4SRlzga2pNnDcO8iDJ2krj/Oqxnd4LIo+wHXdb5uQkI0ij2SaszKkqTMY2MHEMlOdIeJfhIzkDFlLRd6xapgnElIkpqeKIGb39aayZKkzPNjBxDJS+me7C+KGciYZgm9lvovK8P6kh5HSoqtAyRBaAz5VGDrkh7vQOCRwPtKerxRrowdwCKUXclZBfwQ2KPkx62Sy4DDYgehYlhZktQGtqDcrtA/AL5e4uONUtVu2GVaTbqbHqdgBeGNxgdiB6JiOMFbaq6zgeU4KbXK9gU+U8D92g9oMk7urjkrS1L9XcH8iadtwjC8B/jqahGGTvO2O/D0Au63rkyUGsBkSaq/7Xu+Xk84uC8B9ooRjKbSAj7a+XqW0MMoT8cDFwBn5Xy/dfVr4B2xg1DxTJakejsD+CTwICFJehghUXKIJTghdgATehLw857v854g/56c76/OVhKqs6fFDkTFc86SVG9VGCI4Ffg05SdwWW+lpieOzk9anKxCC/79as9kSaqvJcBVpJ8sASwD1sUOooGOJmxLosndTVhFCtV4jWkKDsNJ9XUV1VkWHyNRqsuGudcQlq5P6mpMlKbxcLpJ0sUxA1HxrCxJ9XQ48A/4jlcq2oWEuUtLYwei4lhZkurpGYRVTZKKtTlwZ+wgVCyTJame/gq3ptBcZ8QOoKbuJGzdoxpzGE6ql7sJb4IeSvpDcC3CXloPsrjELjt4Lfb3vBDYbZE/WzVHAMfFDqLGqrDqVFOwsiTVyxaERAlgl5iBLOAThL3G7gOeA5w7xX21Fr7JQE1JlJZholSklcDHCMm3amrT2AFIylX27nZ34FPA4/suT0EbOJ9uTGcz+Ru3NYTfbx0h6Vrs77c/oc9TndmSIV+/BrYkPOfawFeBl0aNSIWzsiTV0wXAnoQD+seYvzdcDOsYvNXKo4E3MFmMbyS8o7+AUJ3aaZExfXeRP5e6xVbbNNwa4Hrgx53vs6G3l3U+7xEnLJXBZEmqr6yr8N8APwMOjRhLmzBE+A7mdzteSjjZnA+sHfLzHyUkALsAt/dd9w1g30XGdeUify5VLUK1zI7S+TqVkKB/E3ge4fnaX8109WmNOcFbao5Yk1DbwJGMN2/mdsKcqy1H3OZa4IV999+k/e6OAv6TUJ1b1nN5C3gscFGMoGruUEIDz4fHDkRxmCxJzXEsIanYruTHnTRJOwn4GnAj4yVAi02WTiCsxpMWsgNwGWnN/VOJTJakZrkfuAn4fkmP90rC8NsmBT7GYitmVdlId1esFsXWIiTXr4gdiOIwWZKa52LgLuBRwAMFP9Y9zB0qKsI0w4upJ0w7AJfHDkKAvZQazWRJUpW1mK51QMpWMP5QpIpnstRgroaTVGW9LQj2jBZFMc7CRElKgk0pJVXZPZ3PWYn8NYRhRknKjZUlSVX2HuC1dIdHskRpxQT38eVcI5qeDSWlxJgsSaq6DcC7CA0D252P0xmvI3i2mW/eBjXJHCcJWoVDbykzkW0okyVJdXAKcCbdzsoPp7t31ygrmTw5WTngshZhI9XrOo/56b7HPpcwEb3N/L3azu1cfjGwesJYVK4dYwegOEyWJNXFKQMuW0JIRDYQNuxd3/fxtgnuf1Xnvv4P3X3uso+NhDYM+9FN2C6gu33LnwPndC6/C7ii52cf3bn81Vi5SFUL+AWwWexAFIetAyQ1wYUMXtDyGsZbDn5b5+cf23PZnoQ3nP2Vol5tQhJ1E7BN33X9zSbr3AahynpPkh8j7LWohjFZktR0C/XPaQNvIuw6vxhLCEnQuLE0aZ+7Mq0HNgd+0/n+wc7n3xI6zGcjLb1J9R8BTyM8P1r4f2ksh+EkNV02t6l/CGz/zuV/yeITJRg/UYLJEiuN71Zgp87Xm3Y+Nu98bDHi575PN5E2UWow+yxJUjdhyqo6dwBbEtoSbCgxjlngK1jFyNO+wCMJk/6lRXEYTpK6sgPiWwmr62JYAlyFc5fy4tCmpmayJEnp8QSfj2zS/CeBxwG7xQ1HVWWyJEnpcWVcftYRJnO/jjBP17+pJmayJElpsrqUvy8TOrb7N9VEXA0nSWlyZVz+NiWsbpQmYrIkSWmaBe4BlscOpEb+jLmNQKWxOAwnSely7lK+FmpAKg1kZUmS0pXNrXHPOCkikyVJSptzl6TITJYkKW1ZdWnXqFFIDWayJEnpmwEuBA6MHEeVtYBbcEhTi+AEb0mqjg3Ai4EnxQ4kQbsDtzO8h9J3gLuAl5QWkWrDjXQlqTqWAkfgqq5e1xASyF69zTyzFYXg30yL5DCcJFXLcYSTfhtYETmW2G4F/pvw98g+sgnxNxL+Rhs7l5koadEchpOk6rob+C/gObEDiWChHlTZ3CS3NtHUrCxJUnU9HPgIYSiqzg5l/sTsrGI0zCwmSsqJlSVJqoc28FbgzNiB5KwN/BR46oDrHFpTKUyWJKk+bu983qqA+34XcEoB97uQ3snsWXVpW0JFTSqFyZIk1csK4FOEieDfBNYt8n5awInAS3su+yywbKroJrcWeBDYu+THlX7HOUuSVC9nESoxy4HzCZWZNnAHoe1Aq/Nx9oCfPann9huBr9BdZXYBIWkp217AG7CZpCKysiRJ9dcCdiRMlN6y5/JbgCf3fH8VoZp00YD7uBC4j5C8ZL4NPBLYJs9ghzz2A5Rf1ZIAm1JKUhNkK8OO6bv8AOBXwOox72ezvu/vAV4wVWRSBZgsSVJznTzh7bfs+95ESY3gnCVJ0rh+1fm8mjCvaQvCfmv7xQpIKoPJkiRpHPcBryEkSU+kO/H7TcBHC3zcFmFuVX9VSyqNE7wlSePaF/jMgMuL2ti39wR1AbBHAY8hLcjKkiRpXIMSpcyJOT/WvcA7CEnYezFRUkQmS5Kkad0HXLuInzuBwf2TjgC+C5zW+b5/FZ9UKofhJEnT2h/4B+CxE/xMG/g68OK+y+8izE9y3zclw2RJkpSHSeYt/RvweeDovstbwM4DLpeiMlmSJOVh3GSpRdhKxcqRKsM5S5KkPNxH6Ai+EBMlVY7JkiQpDzux8ETsXwN/XUIsUq4chpMk5WUJYTPeQZWjIwgb4b6o1IikHJgsSZLydBRh+5On911eVONKqXAOw0mS8vQ+4EHmrmhrE6pOUiVZWZIkFSFLkP4CeCXwirjhSIu3aewAJEm1tISw8g0cflPFmSxJkopikqRacBhOkiRpBCd4S5IkjWCyJEmSNILJkiRJ0ggmS5IkSSOYLEmSJI1gsiRJkjSCyZIkSdIIJkuSJEkjmCxJkiSNYLIkSZI0gsmSJEnSCCZLkiRJI5gsSZIkjWCyJEmSNILJkiRJ0ggmS5IkSSOYLEmSJI1gsiRJkjSCyZIkSdIIJkuSJEkjmCxJkiSNYLIkSZI0gsmSJEnSCCZLkiRJI5gsSZIkjWCyJEmSNILJkiRJ0ggmS5IkSSOYLEmSJI1gsiRJkjSCyZIkSdIIJkuSJEkjmCxJkiSNYLIkSZI0gsmSJEnSCCZLkiRJI5gsSZIkjfD/AaeW4sa8ZNKcAAAAAElFTkSuQmCC';
+const cities = [
+  {name:'南京', lon:118.7969, lat:32.0603, gdp:18500.81, heat:38, playoff:true, desc:'省会城市，决赛承办地之一；样本热搜频次位列第二。', case:'27亿元'},
+  {name:'无锡', lon:120.3119, lat:31.4912, gdp:16263.29, heat:null, playoff:true, desc:'万亿GDP城市，四强之一；公开正文未披露具体热搜次数。', case:'40多个足球夜市'},
+  {name:'徐州', lon:117.2858, lat:34.2044, gdp:9537.12, heat:8, playoff:true, desc:'苏北重镇，开赛1个月文旅消费30.79亿元。', case:'30.79亿元'},
+  {name:'常州', lon:119.9741, lat:31.8112, gdp:10813.60, heat:50, playoff:false, desc:'GDP并非全省最高，却在热搜披露样本中位列第一。常州的出圈，恰好说明苏超的热度并不完全由经济体量决定。', case:'十三妹'},
+  {name:'苏州', lon:120.5853, lat:31.2989, gdp:26726.98, heat:16, playoff:false, desc:'江苏GDP最高城市，南京主场对苏州形成27亿元消费案例。', case:'山塘街/平江路'},
+  {name:'南通', lon:120.8646, lat:32.0162, gdp:12421.90, heat:16, playoff:true, desc:'进入决赛，热搜频次与苏州并列。', case:'决赛球队'},
+  {name:'连云港', lon:119.1788, lat:34.6001, gdp:4663.13, heat:null, playoff:true, desc:'八强城市；新华社正文有排序描述但未披露具体热搜次数。', case:'西游文化'},
+  {name:'淮安', lon:119.0153, lat:33.6104, gdp:5413.02, heat:null, playoff:true, desc:'八强城市；盱眙龙虾等城市IP与票根经济结合。', case:'盱眙龙虾'},
+  {name:'盐城', lon:120.1636, lat:33.3473, gdp:7779.18, heat:3, playoff:true, desc:'八强城市；苏州vs盐城第11轮中签率10.0%。', case:'观鸟+观赛'},
+  {name:'扬州', lon:119.4210, lat:32.3932, gdp:7809.64, heat:8, playoff:false, desc:'热搜披露频次8次，和徐州、镇江并列。', case:'扬州炒饭'},
+  {name:'镇江', lon:119.4528, lat:32.2044, gdp:5540.01, heat:8, playoff:false, desc:'热搜披露频次8次；揭幕战主场城市。', case:'西津渡'},
+  {name:'泰州', lon:119.9152, lat:32.4849, gdp:7020.95, heat:3, playoff:true, desc:'决赛夺冠城市；热搜披露频次3次。', case:'冠军'},
+  {name:'宿迁', lon:118.2752, lat:33.9630, gdp:4801.85, heat:null, playoff:false, desc:'公开报道中提及排序但未披露具体热搜数。', case:'楚汉争霸梗'}
+];
+const knownHeat = cities.filter(d=>d.heat!==null).sort((a,b)=>b.heat-a.heat);
+const gdpRank = [...cities].sort((a,b)=>b.gdp-a.gdp).map(d=>({label:d.name,value:d.gdp,note:'2024 GDP'}));
+const ticketData=[
+  {label:'决赛',value:1.2,note:'新华社：决赛门票中签率仅1.2%'},
+  {label:'南通vs淮安',value:3.3,note:'四分之一决赛最低中签率'},
+  {label:'苏州vs盐城',value:10.0,note:'第11轮抽签'},
+  {label:'南京vs徐州',value:12.4,note:'第11轮抽签'},
+  {label:'扬州vs南通',value:13.6,note:'第11轮抽签'},
+  {label:'无锡vs连云港',value:21.5,note:'第11轮抽签'},
+  {label:'淮安vs泰州',value:30.6,note:'第11轮抽签'}
+];
+const scheduleRows=[
+  ['常规赛','第1轮','5月10-11日','镇江','3:2','扬州','镇江胜'],
+  ['常规赛','第1轮','5月10-11日','常州','0:2','连云港','连云港胜'],
+  ['常规赛','第1轮','5月10-11日','泰州','2:0','无锡','泰州胜'],
+  ['常规赛','第1轮','5月10-11日','苏州','2:2','宿迁','平局'],
+  ['常规赛','第1轮','5月10-11日','徐州','1:1','盐城','平局'],
+  ['常规赛','第1轮','5月10-11日','南京','1:2','南通','南通胜'],
+  ['常规赛','第2轮','5月18-25日','淮安','4:0','镇江','淮安胜'],
+  ['常规赛','第2轮','5月18-25日','南京','3:0','连云港','南京胜'],
+  ['常规赛','第2轮','5月18-25日','盐城','3:0','泰州','盐城胜'],
+  ['常规赛','第2轮','5月18-25日','南通','2:0','常州','南通胜'],
+  ['常规赛','第2轮','5月18-25日','宿迁','1:1','徐州','平局'],
+  ['常规赛','第2轮','5月18-25日','无锡','1:1','苏州','平局'],
+  ['常规赛','第3轮','5月31-6月1日','宿迁','2:0','镇江','宿迁胜'],
+  ['常规赛','第3轮','5月31-6月1日','扬州','1:0','常州','扬州胜'],
+  ['常规赛','第3轮','5月31-6月1日','徐州','2:1','连云港','徐州胜'],
+  ['常规赛','第3轮','5月31-6月1日','盐城','1:0','淮安','盐城胜'],
+  ['常规赛','第3轮','5月31-6月1日','南通','4:0','泰州','南通胜'],
+  ['常规赛','第3轮','5月31-6月1日','南京','1:0','无锡','南京胜'],
+  ['常规赛','第4轮','6月14-21日','淮安','1:1','南京','平局，现场26018人'],
+  ['常规赛','第4轮','6月14-21日','扬州','1:1','泰州','平局'],
+  ['常规赛','第4轮','6月14-21日','宿迁','0:1','盐城','因中考延期至6月21日'],
+  ['常规赛','第4轮','6月14-21日','无锡','2:0','常州','无锡胜'],
+  ['常规赛','第4轮','6月14-21日','徐州','1:0','镇江','徐州胜'],
+  ['常规赛','第4轮','6月14-21日','连云港','1:1','苏州','平局'],
+  ['常规赛','第5轮','6月21-29日','常州','0:4','南京','南京胜，现场36712人'],
+  ['常规赛','第5轮','6月28-29日','盐城','2:0','镇江','盐城胜'],
+  ['常规赛','第5轮','6月28-29日','连云港','2:0','淮安','连云港胜'],
+  ['常规赛','第5轮','6月28-29日','南通','4:0','宿迁','南通胜'],
+  ['常规赛','第5轮','6月28-29日','苏州','3:0','扬州','苏州胜'],
+  ['常规赛','第5轮','6月28-29日','泰州','2:1','徐州','泰州胜'],
+  ['常规赛','第6轮','7月5-6日','南京','0:0','苏州','平局，现场60396人'],
+  ['常规赛','第6轮','7月5-6日','扬州','0:2','无锡','无锡胜'],
+  ['常规赛','第6轮','7月5-6日','徐州','1:2','南通','南通胜'],
+  ['常规赛','第6轮','7月5-6日','镇江','0:2','泰州','泰州胜'],
+  ['常规赛','第6轮','7月5-6日','淮安','0:0','常州','平局'],
+  ['常规赛','第6轮','7月5-6日','宿迁','2:2','连云港','平局'],
+  ['常规赛','第7轮','7月19-20日','泰州','1:0','宿迁','泰州胜'],
+  ['常规赛','第7轮','7月19-20日','南通','2:1','盐城','南通胜'],
+  ['常规赛','第7轮','7月19-20日','苏州','4:0','镇江','苏州胜'],
+  ['常规赛','第7轮','7月19-20日','常州','0:2','徐州','徐州胜'],
+  ['常规赛','第7轮','7月19-20日','扬州','1:5','南京','南京胜'],
+  ['常规赛','第7轮','7月19-20日','无锡','1:2','淮安','淮安胜'],
+  ['常规赛','第8轮','8月2-3日','镇江','0:3','南通','南通胜'],
+  ['常规赛','第8轮','8月2-3日','淮安','3:0','苏州','淮安胜'],
+  ['常规赛','第8轮','8月2-3日','徐州','2:1','扬州','徐州胜'],
+  ['常规赛','第8轮','8月2-3日','连云港','2:3','泰州','泰州胜'],
+  ['常规赛','第8轮','8月2-3日','盐城','5:0','常州','盐城胜'],
+  ['常规赛','第8轮','8月2-3日','宿迁','0:1','无锡','无锡胜'],
+  ['常规赛','第9轮','8月16-17日','常州','1:0','镇江','常州胜'],
+  ['常规赛','第9轮','8月16-17日','苏州','1:1','泰州','平局'],
+  ['常规赛','第9轮','8月16-17日','无锡','3:3','徐州','平局'],
+  ['常规赛','第9轮','8月16-17日','扬州','1:0','淮安','扬州胜'],
+  ['常规赛','第9轮','8月16-17日','南京','3:2','盐城','南京胜'],
+  ['常规赛','第9轮','8月16-17日','南通','5:0','连云港','南通胜'],
+  ['常规赛','第10轮','8月30-31日','镇江','1:2','南京','南京胜'],
+  ['常规赛','第10轮','8月30-31日','连云港','1:2','扬州','扬州胜'],
+  ['常规赛','第10轮','8月30-31日','南通','2:1','苏州','南通胜'],
+  ['常规赛','第10轮','8月30-31日','盐城','2:2','无锡','平局'],
+  ['常规赛','第10轮','8月30-31日','宿迁','2:0','淮安','宿迁胜'],
+  ['常规赛','第10轮','8月30-31日','泰州','1:1','常州','平局'],
+  ['常规赛','第11轮','9月6-13日','常州','1:2','宿迁','宿迁胜'],
+  ['常规赛','第11轮','9月6-13日','淮安','3:1','泰州','淮安胜'],
+  ['常规赛','第11轮','9月6-13日','苏州','2:3','盐城','盐城胜'],
+  ['常规赛','第11轮','9月6-13日','扬州','0:1','南通','南通胜'],
+  ['常规赛','第11轮','9月6-13日','无锡','0:0','连云港','平局'],
+  ['常规赛','第11轮','9月6-13日','南京','1:1','徐州','平局'],
+  ['常规赛','第12轮','9月20日','镇江','2:5','无锡','无锡胜'],
+  ['常规赛','第12轮','9月20日','盐城','1:3','连云港','连云港胜'],
+  ['常规赛','第12轮','9月20日','宿迁','3:1','扬州','宿迁胜'],
+  ['常规赛','第12轮','9月20日','徐州','1:0','苏州','徐州胜'],
+  ['常规赛','第12轮','9月20日','泰州','3:0','南京','泰州胜'],
+  ['常规赛','第12轮','9月20日','南通','1:1','淮安','平局'],
+  ['常规赛','第13轮','9月27日','连云港','1:0','镇江','连云港胜'],
+  ['常规赛','第13轮','9月27日','淮安','0:0','徐州','平局'],
+  ['常规赛','第13轮','9月27日','扬州','0:2','盐城','盐城胜'],
+  ['常规赛','第13轮','9月27日','苏州','3:2','常州','苏州胜'],
+  ['常规赛','第13轮','9月27日','无锡','1:1','南通','平局'],
+  ['常规赛','第13轮','9月27日','南京','4:0','宿迁','南京胜'],
+  ['淘汰赛','1/4决赛','10月4-8日','南京','1:1（点4:2）','连云港','南京晋级，现场61355人'],
+  ['淘汰赛','1/4决赛','10月4-8日','徐州','1:1（点2:4）','泰州','泰州晋级'],
+  ['淘汰赛','1/4决赛','10月4-8日','南通','5:0','淮安','南通晋级'],
+  ['淘汰赛','1/4决赛','10月4-8日','盐城','0:3','无锡','无锡晋级'],
+  ['淘汰赛','半决赛','10月18-19日','南通','0:0（点4:2）','无锡','南通晋级'],
+  ['淘汰赛','半决赛','10月18-19日','南京','1:1（点7:8）','泰州','泰州晋级'],
+  ['淘汰赛','决赛','11月1日','南通','0:0（点3:4）','泰州','泰州夺冠，现场62329人']
+];
+const mapBounds={minLon:116.9,maxLon:121.3,minLat:30.8,maxLat:35.1};
+function svgEl(tag, attrs){const el=document.createElementNS('http://www.w3.org/2000/svg', tag); for(const k in attrs) el.setAttribute(k, attrs[k]); return el;}
+function clear(el){el.innerHTML='';}
+function mapBox(w,h){return {x:w*0.04,y:h*0.02,width:w*0.92,height:h*0.95}}
+function project(lon,lat,w,h){const b=mapBox(w,h); const x=b.x+(lon-mapBounds.minLon)/(mapBounds.maxLon-mapBounds.minLon)*b.width; const y=b.y+(mapBounds.maxLat-lat)/(mapBounds.maxLat-mapBounds.minLat)*b.height; return [x,y];}
+function drawMapImage(svg,w,h,opacity=.95){const b=mapBox(w,h); svg.appendChild(svgEl('image',{x:b.x,y:b.y,width:b.width,height:b.height,href:mapImage,opacity,preserveAspectRatio:'xMidYMid meet'}));}
+function updateCityDetail(p){$('#cityDetail .city-name').textContent=p.name; $('#cityDetail .city-copy').textContent=p.desc; const boxes=$$('#cityDetail .mini-box b'); boxes[0].textContent=p.gdp.toFixed(2); boxes[1].textContent=p.heat ?? '未披露'; boxes[2].textContent=p.playoff ? '八强' : '—'; boxes[3].textContent=p.case;}
+function drawSimpleMap(targetId, mode='all', withLabels=true, networkEdges=null){
+  const el=$(targetId), w=el.clientWidth, h=el.clientHeight; clear(el);
+  const svg=svgEl('svg',{viewBox:`0 0 ${w} ${h}`}); el.appendChild(svg); drawMapImage(svg,w,h,.96);
+  const pts=cities.map(c=>{const [x,y]=project(c.lon,c.lat,w,h); return {...c,x,y};});
+  if(networkEdges){
+    const active=networkEdges;
+    active.forEach(e=>{const a=pts.find(p=>p.name===e.a),b=pts.find(p=>p.name===e.b); if(!a||!b) return; const line=svgEl('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,'class':'edge'}); svg.appendChild(line); const mid=svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-6,fill:'#ffcf5a','font-size':11,'font-weight':800,'text-anchor':'middle'}); mid.textContent=e.label; svg.appendChild(mid); line.addEventListener('mousemove',ev=>showTip(`<b>${e.a} vs ${e.b}</b><br>${e.type==='ticket'?'第11轮抽签样本':'淘汰赛样本'}：${e.label}`,ev.clientX,ev.clientY)); line.addEventListener('mouseleave',hideTip); })
+  }
+  pts.forEach(p=>{let visible=true; if(mode==='heat') visible=(p.heat||0)>=16; if(mode==='gdp') visible=p.gdp>=10000; if(mode==='playoff') visible=p.playoff; const alpha=visible?1:.22; const r=8+Math.sqrt(p.gdp)/22+((p.heat||0)/12); const g=svgEl('g',{'class':'node'}); g.style.opacity=alpha; g.appendChild(svgEl('circle',{cx:p.x,cy:p.y,r:r+6,fill:p.heat?'rgba(84,214,255,.12)':'rgba(145,165,191,.08)'})); g.appendChild(svgEl('circle',{cx:p.x,cy:p.y,r,fill:p.playoff?'#54d6ff':'#ffcf5a',stroke:'rgba(255,255,255,.8)','stroke-width':1.2})); if(withLabels){ const t=svgEl('text',{x:p.x+12,y:p.y+5,'class':'city-label'}); t.textContent=p.name; g.appendChild(t); } g.addEventListener('mousemove',e=>showTip(`<b>${p.name}队</b><br>2024 GDP：${p.gdp} 亿元<br>热搜频次：${p.heat ?? '新华社正文未披露'}<br>${p.playoff?'进入八强':'未进入八强/未标注八强'}`,e.clientX,e.clientY)); g.addEventListener('mouseleave',hideTip); if(targetId==='#cityMap') g.addEventListener('click',()=>updateCityDetail(p)); svg.appendChild(g); });
+}
+function drawBar(elId,data,opts={}){const el=$(elId), w=el.clientWidth, h=el.clientHeight; clear(el); const m={l:opts.left||110,r:30,t:20,b:36}; const svg=svgEl('svg',{viewBox:`0 0 ${w} ${h}`}); el.appendChild(svg); const max=Math.max(...data.map(d=>d.value))*1.08; const slot=(h-m.t-m.b)/data.length; const bw=slot*.64; data.forEach((d,i)=>{const y=m.t+i*slot+slot*.18; const barw=(w-m.l-m.r)*d.value/max; svg.appendChild(svgEl('line',{x1:m.l,y1:y+bw+10,x2:w-m.r,y2:y+bw+10,'class':'grid-line'})); const label=svgEl('text',{x:m.l-8,y:y+bw*.68,'text-anchor':'end','class':'bar-label'}); label.textContent=d.label; svg.appendChild(label); const fill=(opts.highlight && opts.highlight===d.label)?'#ffcf5a':(opts.color||'#54d6ff'); const rect=svgEl('rect',{x:m.l,y,width:barw,height:bw,fill,'class':'bar'}); rect.addEventListener('mousemove',e=>showTip(`<b>${d.label}</b><br>${opts.valueLabel||'数值'}：${d.value}${opts.suffix||''}<br>${d.note||''}`,e.clientX,e.clientY)); rect.addEventListener('mouseleave',hideTip); svg.appendChild(rect); const v=svgEl('text',{x:m.l+barw+8,y:y+bw*.68,fill:'#eaf3ff','font-size':12,'font-weight':800}); v.textContent=(opts.format ? opts.format(d.value) : d.value)+(opts.suffix||''); svg.appendChild(v); });}
+function drawNetwork(filter='all'){const edges=[
+  {a:'扬州',b:'南通',type:'ticket',label:'13.6%'},{a:'无锡',b:'连云港',type:'ticket',label:'21.5%'},{a:'南京',b:'徐州',type:'ticket',label:'12.4%'},{a:'淮安',b:'泰州',type:'ticket',label:'30.6%'},{a:'苏州',b:'盐城',type:'ticket',label:'10.0%'},
+  {a:'南通',b:'淮安',type:'knockout',label:'3.3%'},{a:'南京',b:'连云港',type:'knockout',label:'61355人'},{a:'徐州',b:'泰州',type:'knockout',label:'点球大战'},{a:'南通',b:'泰州',type:'knockout',label:'决赛'}
+]; const active=edges.filter(e=>filter==='all'||e.type===filter); drawSimpleMap('#matchNetwork','all',true,active);}
+
+function renderSchedule(){
+  const body=$('#scheduleBody'); if(!body) return;
+  const q=($('#scheduleSearch')?.value||'').trim();
+  const stage=$('#scheduleStage')?.value||'全部';
+  const round=$('#scheduleRound')?.value||'全部';
+  const rows=scheduleRows.filter(r=>{
+    const text=r.join(' ');
+    return (stage==='全部'||r[0]===stage) && (round==='全部'||r[1]===round) && (!q||text.includes(q));
+  });
+  body.innerHTML=rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+}
+function initScheduleFilters(){
+  const sel=$('#scheduleRound'); if(!sel) return;
+  const rounds=[...new Set(scheduleRows.map(r=>r[1]))];
+  if(sel.options.length===1){ rounds.forEach(r=>{const o=document.createElement('option'); o.value=r; o.textContent=r; sel.appendChild(o);}); }
+  ['#scheduleSearch','#scheduleStage','#scheduleRound'].forEach(id=>{
+    const el=$(id);
+    if(el){ el.addEventListener('input',renderSchedule); el.addEventListener('change',renderSchedule); }
+  });
+  renderSchedule();
+}
+
+function init(){
+  drawSimpleMap('#heroMap','all',true, [{a:'南京',b:'苏州',type:'x',label:''},{a:'南京',b:'徐州',type:'x',label:''},{a:'苏州',b:'盐城',type:'x',label:''},{a:'南通',b:'淮安',type:'x',label:''},{a:'泰州',b:'徐州',type:'x',label:''},{a:'无锡',b:'连云港',type:'x',label:''},{a:'扬州',b:'南通',type:'x',label:''},{a:'常州',b:'淮安',type:'x',label:''}].map(d=>({...d,label:''})) );
+  drawSimpleMap('#cityMap','all',true); updateCityDetail(cities.find(c=>c.name==='常州'));
+  drawBar('#gdpBar', gdpRank, {valueLabel:'GDP', format:v=>v.toFixed(2), color:'#54d6ff'});
+  drawBar('#heatBar', knownHeat.map(d=>({label:d.name,value:d.heat,note:`2024 GDP ${d.gdp} 亿元`})), {valueLabel:'热搜出现', suffix:'次', color:'#54d6ff', highlight:'常州'});
+  drawBar('#heatBar2', knownHeat.map(d=>({label:d.name,value:d.heat,note:`2024 GDP ${d.gdp} 亿元`})), {valueLabel:'热搜出现', suffix:'次', color:'#54d6ff', highlight:'常州'});
+  drawBar('#ticketBar', ticketData, {valueLabel:'中签率', suffix:'%', color:'#ffcf5a'});
+  initScheduleFilters();
+  drawNetwork('all');
+}
+$$('[data-map]').forEach(b=>b.addEventListener('click',()=>{$$('[data-map]').forEach(x=>x.classList.remove('active')); b.classList.add('active'); drawSimpleMap('#cityMap', b.dataset.map, true);}));
+$$('[data-net]').forEach(b=>b.addEventListener('click',()=>{$$('[data-net]').forEach(x=>x.classList.remove('active')); b.classList.add('active'); drawNetwork(b.dataset.net);}));
+$$('.flow-step').forEach(s=>s.addEventListener('click',()=>{$$('.flow-step').forEach(x=>x.classList.remove('active')); s.classList.add('active'); $('#flowDetail').textContent=s.dataset.flow;}));
+const observer = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('in')}),{threshold:.12}); $$('.reveal').forEach(el=>observer.observe(el));
+window.addEventListener('resize', init); init();
+</script>
+</body>
+</html>
